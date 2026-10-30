@@ -31,12 +31,12 @@ export const RiskGauge: React.FC<RiskGaugeProps> = ({ score, verdict, size = 180
   return (
     <div className="relative flex flex-col items-center justify-center" style={{ width: size, height: size }}>
       <svg width={size} height={size} className="transform -rotate-90">
-        {/* Background track circle */}
+        {/* Background track circle - adaptive for light & dark */}
         <circle
           cx={size / 2}
           cy={size / 2}
           r={radius}
-          stroke="rgba(255, 255, 255, 0.08)"
+          className="stroke-slate-200 dark:stroke-white/10"
           strokeWidth={strokeWidth}
           fill={bgFill}
         />
@@ -70,8 +70,8 @@ export const RiskGauge: React.FC<RiskGaugeProps> = ({ score, verdict, size = 180
         >
           {score}
         </motion.span>
-        <span className="text-[10px] font-bold tracking-widest text-slate-400 uppercase mt-0.5">
-          Risk Index
+        <span className="text-[10px] uppercase tracking-wider text-slate-500 dark:text-slate-400 font-mono">
+          Risk Score
         </span>
       </div>
     </div>

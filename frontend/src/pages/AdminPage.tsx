@@ -130,17 +130,17 @@ export const AdminPage: React.FC = () => {
   // If not authenticated as Admin, display prompt
   if (!isAdmin) {
     return (
-      <div className="min-h-screen bg-[#050814] flex flex-col items-center justify-center p-4 text-center">
-        <div className="w-14 h-14 rounded-2xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-4">
+      <div className="min-h-screen bg-slate-50 dark:bg-[#050814] flex flex-col items-center justify-center p-4 text-center transition-colors duration-200">
+        <div className="w-14 h-14 rounded-2xl bg-indigo-50 dark:bg-purple-500/10 border border-indigo-200 dark:border-purple-500/30 flex items-center justify-center text-indigo-600 dark:text-purple-400 mb-4">
           <Lock className="w-7 h-7" />
         </div>
-        <h2 className="text-xl sm:text-2xl font-bold text-white mb-2">Administrator Authorization Required</h2>
-        <p className="text-xs sm:text-sm text-slate-400 max-w-md mb-6">
+        <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-2">Administrator Authorization Required</h2>
+        <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 max-w-md mb-6">
           Access to machine learning model benchmarks, training triggers, dataset uploads, and user privileges requires staff admin credentials.
         </p>
         <button
           onClick={() => openAuthModal('login')}
-          className="px-6 py-2.5 bg-gradient-to-r from-cyan-400 to-sky-400 text-slate-950 font-bold text-xs rounded-xl shadow-cyber-cyan"
+          className="px-6 py-2.5 bg-blue-600 hover:bg-blue-700 dark:bg-gradient-to-r dark:from-cyan-400 dark:to-sky-400 text-white dark:text-slate-950 font-bold text-xs rounded-xl shadow-sm dark:shadow-cyber-cyan"
         >
           Sign In as Admin
         </button>
@@ -149,16 +149,16 @@ export const AdminPage: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-[#050814] text-slate-100 py-10 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-slate-50 dark:bg-[#050814] text-slate-900 dark:text-slate-100 py-10 px-4 sm:px-6 lg:px-8 transition-colors duration-200">
       <div className="max-w-7xl mx-auto space-y-8">
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
-            <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white flex items-center gap-2.5">
-              <Cpu className="w-7 h-7 text-purple-400" />
+            <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white flex items-center gap-2.5">
+              <Cpu className="w-7 h-7 text-indigo-600 dark:text-purple-400" />
               Machine Learning & Admin Operations
             </h1>
-            <p className="text-xs sm:text-sm text-slate-400 mt-1">
+            <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
               Active model tuning, dataset ingestion, and live multi-classifier benchmarking
             </p>
           </div>
@@ -166,7 +166,7 @@ export const AdminPage: React.FC = () => {
           <button
             onClick={handleTrainModels}
             disabled={training}
-            className="px-5 py-2.5 bg-gradient-to-r from-purple-600 via-indigo-600 to-cyan-500 hover:from-purple-500 hover:to-cyan-400 text-white font-bold text-xs rounded-xl shadow-cyber-purple transition-all flex items-center gap-2 flex-shrink-0 disabled:opacity-50"
+            className="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 dark:bg-gradient-to-r dark:from-purple-600 dark:via-indigo-600 dark:to-cyan-500 dark:hover:from-purple-500 dark:hover:to-cyan-400 text-white font-bold text-xs rounded-xl shadow-sm dark:shadow-cyber-purple transition-all flex items-center gap-2 flex-shrink-0 disabled:opacity-50"
           >
             {training ? (
               <>
@@ -186,8 +186,8 @@ export const AdminPage: React.FC = () => {
           <div
             className={`p-4 rounded-xl text-xs font-semibold flex items-center gap-2.5 ${
               notification.type === 'success'
-                ? 'bg-emerald-950/40 border border-emerald-500/40 text-emerald-300'
-                : 'bg-red-950/40 border border-red-500/40 text-red-300'
+                ? 'bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-500/40 text-emerald-700 dark:text-emerald-300'
+                : 'bg-rose-50 dark:bg-red-950/40 border border-rose-200 dark:border-red-500/40 text-rose-700 dark:text-red-300'
             }`}
           >
             {notification.type === 'success' ? <CheckCircle className="w-4 h-4" /> : <AlertTriangle className="w-4 h-4" />}
@@ -195,26 +195,26 @@ export const AdminPage: React.FC = () => {
           </div>
         )}
 
-        {/* Section: Model Performance Benchmark Table (Section 6 & Slide 8) */}
-        <div className="p-6 rounded-2xl bg-[#080C1D] border border-slate-800">
+        {/* Section: Model Performance Benchmark Table */}
+        <div className="p-6 rounded-2xl bg-white dark:bg-[#080C1D] border border-slate-200 dark:border-slate-800 shadow-xs">
           <div className="flex items-center justify-between mb-4">
             <div>
-              <h3 className="text-base font-bold text-white flex items-center gap-2">
-                <BarChart2 className="w-5 h-5 text-cyan-400" />
+              <h3 className="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                <BarChart2 className="w-5 h-5 text-blue-600 dark:text-cyan-400" />
                 Machine Learning Algorithms Benchmark Comparison
               </h3>
-              <p className="text-xs text-slate-400">
+              <p className="text-xs text-slate-500 dark:text-slate-400">
                 Independent evaluation on unseen test split (Accuracy, Precision, Recall, F1-Score, ROC-AUC)
               </p>
             </div>
-            <div className="text-xs font-mono text-cyan-400 bg-cyan-950/40 border border-cyan-800/40 px-3 py-1 rounded-lg">
-              Active: <strong className="text-white">{activeModel || 'Gradient Boosted Trees'}</strong>
+            <div className="text-xs font-mono text-blue-700 dark:text-cyan-400 bg-blue-50 dark:bg-cyan-950/40 border border-blue-200 dark:border-cyan-800/40 px-3 py-1 rounded-lg">
+              Active: <strong className="text-slate-900 dark:text-white">{activeModel || 'Gradient Boosted Trees'}</strong>
             </div>
           </div>
 
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs font-mono">
-              <thead className="bg-[#050814] text-slate-400 uppercase text-[10px] border-y border-slate-800">
+              <thead className="bg-slate-50 dark:bg-[#050814] text-slate-600 dark:text-slate-400 uppercase text-[10px] border-y border-slate-200 dark:border-slate-800">
                 <tr>
                   <th className="py-3 px-4">Algorithm / Model</th>
                   <th className="py-3 px-3">Accuracy</th>
@@ -226,7 +226,7 @@ export const AdminPage: React.FC = () => {
                   <th className="py-3 px-4 text-right font-sans">Action</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-800/60 font-sans">
+              <tbody className="divide-y divide-slate-200 dark:divide-slate-800/60 font-sans">
                 {models.length === 0 ? (
                   <tr>
                     <td colSpan={8} className="py-8 text-center text-slate-500">
@@ -237,33 +237,33 @@ export const AdminPage: React.FC = () => {
                   models.map((m, idx) => {
                     const isCurrent = m.model_name === activeModel;
                     return (
-                      <tr key={idx} className={isCurrent ? 'bg-cyan-950/20' : 'hover:bg-slate-900/30'}>
-                        <td className="py-3.5 px-4 font-bold text-white flex items-center gap-2">
-                          <Cpu className={`w-4 h-4 ${isCurrent ? 'text-cyan-400' : 'text-slate-500'}`} />
+                      <tr key={idx} className={isCurrent ? 'bg-blue-50/50 dark:bg-cyan-950/20' : 'hover:bg-slate-50 dark:hover:bg-slate-900/30'}>
+                        <td className="py-3.5 px-4 font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                          <Cpu className={`w-4 h-4 ${isCurrent ? 'text-blue-600 dark:text-cyan-400' : 'text-slate-400 dark:text-slate-500'}`} />
                           {m.model_name}
                         </td>
-                        <td className="py-3 px-3 font-mono font-semibold text-emerald-400">
+                        <td className="py-3 px-3 font-mono font-semibold text-emerald-600 dark:text-emerald-400">
                           {(m.accuracy * 100).toFixed(1)}%
                         </td>
-                        <td className="py-3 px-3 font-mono text-slate-300">
+                        <td className="py-3 px-3 font-mono text-slate-600 dark:text-slate-300">
                           {(m.precision * 100).toFixed(1)}%
                         </td>
-                        <td className="py-3 px-3 font-mono text-slate-300">
+                        <td className="py-3 px-3 font-mono text-slate-600 dark:text-slate-300">
                           {(m.recall * 100).toFixed(1)}%
                         </td>
-                        <td className="py-3 px-3 font-mono font-bold text-purple-400">
+                        <td className="py-3 px-3 font-mono font-bold text-indigo-600 dark:text-purple-400">
                           {(m.f1_score * 100).toFixed(1)}%
                         </td>
-                        <td className="py-3 px-3 font-mono text-cyan-400 font-bold">
+                        <td className="py-3 px-3 font-mono text-blue-600 dark:text-cyan-400 font-bold">
                           {m.auc_score.toFixed(3)}
                         </td>
                         <td className="py-3 px-3">
                           {isCurrent ? (
-                            <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-cyan-950 text-cyan-300 border border-cyan-500/40 font-mono">
+                            <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-blue-100 text-blue-700 dark:bg-cyan-950 dark:text-cyan-300 border border-blue-200 dark:border-cyan-500/40 font-mono">
                               ACTIVE ENGINE
                             </span>
                           ) : (
-                            <span className="text-[10px] text-slate-500">Standby</span>
+                            <span className="text-[10px] text-slate-400 dark:text-slate-500">Standby</span>
                           )}
                         </td>
                         <td className="py-3 px-4 text-right">
@@ -272,8 +272,8 @@ export const AdminPage: React.FC = () => {
                             disabled={isCurrent}
                             className={`px-3 py-1 rounded text-xs font-semibold transition-colors ${
                               isCurrent
-                                ? 'bg-slate-800 text-slate-500 cursor-default'
-                                : 'bg-cyan-500/20 hover:bg-cyan-500 text-cyan-300 hover:text-slate-950 border border-cyan-500/30'
+                                ? 'bg-slate-100 dark:bg-slate-800 text-slate-400 dark:text-slate-500 cursor-default'
+                                : 'bg-blue-50 hover:bg-blue-600 text-blue-700 hover:text-white border border-blue-200 dark:bg-cyan-500/20 dark:hover:bg-cyan-500 dark:text-cyan-300 dark:hover:text-slate-950 dark:border-cyan-500/30'
                             }`}
                           >
                             {isCurrent ? 'Active' : 'Deploy Model'}
@@ -291,34 +291,34 @@ export const AdminPage: React.FC = () => {
         {/* Two-Column Section: Dataset Upload & User Management */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Dataset Upload */}
-          <div className="p-6 rounded-2xl bg-[#080C1D] border border-slate-800 flex flex-col justify-between">
+          <div className="p-6 rounded-2xl bg-white dark:bg-[#080C1D] border border-slate-200 dark:border-slate-800 shadow-xs flex flex-col justify-between">
             <div>
-              <h3 className="text-base font-bold text-white mb-1 flex items-center gap-2">
-                <Upload className="w-5 h-5 text-sky-400" />
+              <h3 className="text-base font-bold text-slate-900 dark:text-white mb-1 flex items-center gap-2">
+                <Upload className="w-5 h-5 text-blue-600 dark:text-sky-400" />
                 Ingest Training Dataset (CSV)
               </h3>
-              <p className="text-xs text-slate-400 mb-4">
-                Upload URL datasets from PhishTank, OpenPhish, or Kaggle with <code className="text-cyan-300 font-mono">url,label</code> headers.
+              <p className="text-xs text-slate-500 dark:text-slate-400 mb-4">
+                Upload URL datasets from PhishTank, OpenPhish, or Kaggle with <code className="text-blue-600 dark:text-cyan-300 font-mono font-semibold">url,label</code> headers.
               </p>
 
               <form onSubmit={handleDatasetUpload} className="space-y-4">
                 <div>
-                  <label className="block text-xs font-medium text-slate-300 mb-1">Dataset Name</label>
+                  <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Dataset Name</label>
                   <input
                     type="text"
                     value={datasetName}
                     onChange={(e) => setDatasetName(e.target.value)}
                     placeholder="e.g. PhishTank_Verified_Oct2026"
-                    className="w-full bg-[#050814] border border-slate-800 rounded-lg px-3 py-2 text-xs text-white placeholder-slate-600 outline-none"
+                    className="w-full bg-slate-50 dark:bg-[#050814] border border-slate-300 dark:border-slate-800 rounded-lg px-3 py-2 text-xs text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-600 outline-none"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-medium text-slate-300 mb-1">Dataset Classification Type</label>
+                  <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Dataset Classification Type</label>
                   <select
                     value={datasetType}
                     onChange={(e) => setDatasetType(e.target.value)}
-                    className="w-full bg-[#050814] border border-slate-800 rounded-lg px-3 py-2 text-xs text-slate-300 outline-none"
+                    className="w-full bg-slate-50 dark:bg-[#050814] border border-slate-300 dark:border-slate-800 rounded-lg px-3 py-2 text-xs text-slate-800 dark:text-slate-300 outline-none"
                   >
                     <option value="mixed">Mixed (Phishing & Legitimate)</option>
                     <option value="phishing">Phishing URLs Only</option>
@@ -327,19 +327,19 @@ export const AdminPage: React.FC = () => {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-medium text-slate-300 mb-1">Select CSV File</label>
+                  <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Select CSV File</label>
                   <input
                     type="file"
                     accept=".csv"
                     onChange={(e) => setDatasetFile(e.target.files?.[0] || null)}
-                    className="w-full text-xs text-slate-400 file:mr-3 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-slate-800 file:text-cyan-400 hover:file:bg-slate-700 cursor-pointer"
+                    className="w-full text-xs text-slate-500 dark:text-slate-400 file:mr-3 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-slate-200 dark:file:bg-slate-800 file:text-slate-800 dark:file:text-cyan-400 hover:file:bg-slate-300 dark:hover:file:bg-slate-700 cursor-pointer"
                   />
                 </div>
 
                 <button
                   type="submit"
                   disabled={uploadingDataset || !datasetFile}
-                  className="w-full py-2.5 rounded-xl bg-gradient-to-r from-sky-500 to-cyan-500 hover:from-sky-400 hover:to-cyan-400 text-slate-950 font-bold text-xs shadow-cyber-cyan transition-all disabled:opacity-50"
+                  className="w-full py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 dark:bg-gradient-to-r dark:from-sky-500 dark:to-cyan-500 dark:hover:from-sky-400 dark:hover:to-cyan-400 text-white dark:text-slate-950 font-bold text-xs shadow-sm dark:shadow-cyber-cyan transition-all disabled:opacity-50"
                 >
                   {uploadingDataset ? 'Parsing & Ingesting Dataset...' : 'Import Dataset to MongoDB'}
                 </button>
@@ -348,16 +348,16 @@ export const AdminPage: React.FC = () => {
           </div>
 
           {/* User Management */}
-          <div className="p-6 rounded-2xl bg-[#080C1D] border border-slate-800">
-            <h3 className="text-base font-bold text-white mb-1 flex items-center gap-2">
-              <Users className="w-5 h-5 text-purple-400" />
+          <div className="p-6 rounded-2xl bg-white dark:bg-[#080C1D] border border-slate-200 dark:border-slate-800 shadow-xs">
+            <h3 className="text-base font-bold text-slate-900 dark:text-white mb-1 flex items-center gap-2">
+              <Users className="w-5 h-5 text-indigo-600 dark:text-purple-400" />
               User Access & Roles ({users.length})
             </h3>
-            <p className="text-xs text-slate-400 mb-4">Registered accounts in MongoDB users collection</p>
+            <p className="text-xs text-slate-500 dark:text-slate-400 mb-4">Registered accounts in MongoDB users collection</p>
 
             <div className="overflow-y-auto max-h-72">
               <table className="w-full text-left text-xs">
-                <thead className="bg-[#050814] text-slate-400 font-mono text-[10px] uppercase border-y border-slate-800">
+                <thead className="bg-slate-50 dark:bg-[#050814] text-slate-600 dark:text-slate-400 font-mono text-[10px] uppercase border-y border-slate-200 dark:border-slate-800">
                   <tr>
                     <th className="py-2.5 px-3">User</th>
                     <th className="py-2.5 px-3">Role</th>
@@ -365,27 +365,27 @@ export const AdminPage: React.FC = () => {
                     <th className="py-2.5 px-3 text-right">Action</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-800/60 font-sans">
+                <tbody className="divide-y divide-slate-200 dark:divide-slate-800/60 font-sans">
                   {users.map((u) => (
-                    <tr key={u.id} className="hover:bg-slate-900/40">
+                    <tr key={u.id} className="hover:bg-slate-50 dark:hover:bg-slate-900/40">
                       <td className="py-2.5 px-3">
-                        <div className="font-semibold text-white">{u.full_name}</div>
-                        <div className="text-[10px] text-slate-400 font-mono">{u.email}</div>
+                        <div className="font-semibold text-slate-900 dark:text-white">{u.full_name}</div>
+                        <div className="text-[10px] text-slate-500 dark:text-slate-400 font-mono">{u.email}</div>
                       </td>
                       <td className="py-2.5 px-3">
-                        <span className={`px-2 py-0.5 rounded text-[10px] font-mono ${u.role === 'admin' ? 'bg-purple-950 text-purple-300' : 'bg-slate-800 text-slate-300'}`}>
+                        <span className={`px-2 py-0.5 rounded text-[10px] font-mono ${u.role === 'admin' ? 'bg-purple-100 text-purple-700 dark:bg-purple-950 dark:text-purple-300' : 'bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300'}`}>
                           {u.role}
                         </span>
                       </td>
                       <td className="py-2.5 px-3">
-                        <span className={`text-[10px] font-semibold ${u.is_active !== false ? 'text-emerald-400' : 'text-red-400'}`}>
+                        <span className={`text-[10px] font-semibold ${u.is_active !== false ? 'text-emerald-600 dark:text-emerald-400' : 'text-rose-600 dark:text-red-400'}`}>
                           {u.is_active !== false ? 'Active' : 'Suspended'}
                         </span>
                       </td>
                       <td className="py-2.5 px-3 text-right">
                         <button
                           onClick={() => handleToggleUser(u.id)}
-                          className="text-[10px] text-cyan-400 hover:text-cyan-300 font-mono underline"
+                          className="text-[10px] text-blue-600 dark:text-cyan-400 hover:text-blue-700 dark:hover:text-cyan-300 font-mono underline"
                         >
                           Toggle
                         </button>
