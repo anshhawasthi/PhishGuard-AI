@@ -5,12 +5,20 @@ let currentTab = null;
 
 async function getApiBase() {
   const res = await chrome.storage.local.get(['apiBase']);
-  return res.apiBase || DEFAULT_API_BASE;
+  if (!res.apiBase || res.apiBase.includes('localhost:8000') || res.apiBase.includes('127.0.0.1:8000')) {
+    chrome.storage.local.set({ apiBase: DEFAULT_API_BASE });
+    return DEFAULT_API_BASE;
+  }
+  return res.apiBase;
 }
 
 async function getDashboardUrl() {
   const res = await chrome.storage.local.get(['dashboardUrl']);
-  return res.dashboardUrl || DEFAULT_DASHBOARD_URL;
+  if (!res.dashboardUrl || res.dashboardUrl.includes('localhost:5173')) {
+    chrome.storage.local.set({ dashboardUrl: DEFAULT_DASHBOARD_URL });
+    return DEFAULT_DASHBOARD_URL;
+  }
+  return res.dashboardUrl;
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -87,17 +95,67 @@ function initSettingsPanel() {
 
 async function initActiveTab() {
   const tabs = await chrome.tabs.query({ active: true, currentWindow: true });
-  if (tabs && tabs[0]) {
-    currentTab = tabs[0];
-    const urlElem = document.getElementById('active-url');
-    if (urlElem) {
-      urlElem.textContent = currentTab.url || 'No active URL';
-      urlElem.title = currentTab.url || '';
-    }
+  if (!tabs || !tabs[0]) return;
 
-    if (currentTab.url && currentTab.url.startsWith('http')) {
-      triggerScan(currentTab.url, currentTab.id);
+  currentTab = tabs[0];
+  const tabUrl = currentTab.url || '';
+  const urlElem = document.getElementById('active-url');
+
+  // Case A: Tab is on the Warning Interstitial (chrome-extension://.../warning.html)
+  if (tabUrl.includes('/warning/warning.html')) {
+    try {
+      const parsed = new URL(tabUrl);
+      const original = parsed.searchParams.get('url');
+      const score = parseInt(parsed.searchParams.get('score') || '85', 10);
+      const verdict = parsed.searchParams.get('verdict') || 'phishing';
+      const model = parsed.searchParams.get('model') || 'Gradient Boosted Trees';
+      let factors = [];
+      try {
+        factors = JSON.parse(decodeURIComponent(parsed.searchParams.get('factors') || '[]'));
+      } catch {}
+
+      if (urlElem) {
+        urlElem.textContent = original || 'Dangerous Phishing Target';
+        urlElem.title = original || '';
+      }
+
+      renderScanResult({
+        risk_score: score,
+        verdict: verdict,
+        model_version: model,
+        ml_probability: 0.85,
+        factors: factors.length > 0 ? factors : [{ label: 'High-Risk Phishing Threat', severity: 'high' }]
+      });
+      return;
+    } catch (e) {
+      console.warn('Could not parse warning URL parameters:', e);
     }
+  }
+
+  // Case B: Tab is on the Web App viewing an evaluated URL report (?url=...)
+  if (tabUrl.includes('?url=')) {
+    try {
+      const parsed = new URL(tabUrl);
+      const embeddedUrl = parsed.searchParams.get('url');
+      if (embeddedUrl && (embeddedUrl.startsWith('http://') || embeddedUrl.startsWith('https://'))) {
+        if (urlElem) {
+          urlElem.textContent = embeddedUrl;
+          urlElem.title = embeddedUrl;
+        }
+        triggerScan(embeddedUrl, currentTab.id);
+        return;
+      }
+    } catch {}
+  }
+
+  // Case C: Standard Navigation
+  if (urlElem) {
+    urlElem.textContent = tabUrl || 'No active URL';
+    urlElem.title = tabUrl || '';
+  }
+
+  if (tabUrl && (tabUrl.startsWith('http://') || tabUrl.startsWith('https://'))) {
+    triggerScan(tabUrl, currentTab.id);
   }
 }
 

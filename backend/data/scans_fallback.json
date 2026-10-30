@@ -1,5 +1,214 @@
 [
   {
+    "_id": "scan_1793376916690_oeuvn",
+    "user_id": null,
+    "original_url": "http://192.168.1.100/chase-online-banking/login.php",
+    "normalized_url": "http://192.168.1.100/chase-online-banking/login.php",
+    "verdict": "phishing",
+    "risk_score": 80,
+    "ml_prediction": "phishing",
+    "ml_probability": 0.802,
+    "model_version": "Gradient Boosted Trees",
+    "detected_factors": [
+      {
+        "id": "ip_host",
+        "label": "IP-Based Host Address",
+        "severity": "critical",
+        "description": "Host uses a raw numerical IP address instead of a registered domain name, heavily correlated with rogue phishing servers.",
+        "evidence": "Host: 192.168.1.100"
+      },
+      {
+        "id": "brand_spoofing",
+        "label": "Brand Impersonation in Subdomain/Path",
+        "severity": "high",
+        "description": "A well-known brand keyword was found in the subdomain or path of an unrelated domain, a hallmark tactic of credential harvesters.",
+        "evidence": "Target domain: 192.168.1.100, Subdomain: "
+      },
+      {
+        "id": "no_https",
+        "label": "Insecure Protocol (Plain HTTP)",
+        "severity": "medium",
+        "description": "Communication is not encrypted with HTTPS. Browsing or submitting sensitive info over plain HTTP exposes data to eavesdropping.",
+        "evidence": "Protocol: http://"
+      }
+    ],
+    "domain_analysis": {
+      "domain": "192.168.1.100",
+      "subdomain": "",
+      "tld": "",
+      "ip_addresses": [
+        "192.168.1.100"
+      ],
+      "dns_resolves": true,
+      "is_shortener": false,
+      "is_suspicious_tld": false,
+      "entropy": 2.5654
+    },
+    "ssl_analysis": {
+      "has_https": false,
+      "is_valid": false
+    },
+    "content_analysis": {
+      "checked": false,
+      "has_forms": false,
+      "has_password_field": false,
+      "external_form_action": false,
+      "empty_form_action": false,
+      "hidden_elements_count": 0,
+      "suspicious_iframes_count": 0,
+      "disabled_right_click": false,
+      "error_message": "Blocked by SSRF Protection: Target IP \"192.168.1.100\" is a private, loopback, or cloud-metadata address."
+    },
+    "scan_status": "partial",
+    "client_source": "web",
+    "created_at": "2026-10-30T16:15:16.688Z"
+  },
+  {
+    "_id": "scan_1793376896920_khb1h",
+    "user_id": null,
+    "original_url": "https://paypal-security-update.account-verification.ga/login.php",
+    "normalized_url": "https://paypal-security-update.account-verification.ga/login.php",
+    "verdict": "phishing",
+    "risk_score": 70,
+    "ml_prediction": "legitimate",
+    "ml_probability": 0.1905,
+    "model_version": "Gradient Boosted Trees",
+    "detected_factors": [
+      {
+        "id": "brand_spoofing",
+        "label": "Brand Impersonation in Subdomain/Path",
+        "severity": "high",
+        "description": "A well-known brand keyword was found in the subdomain or path of an unrelated domain, a hallmark tactic of credential harvesters.",
+        "evidence": "Target domain: account-verification.ga, Subdomain: paypal-security-update"
+      },
+      {
+        "id": "suspicious_tld",
+        "label": "High-Risk Top Level Domain",
+        "severity": "high",
+        "description": "The domain uses \".ga\", a top-level domain frequently associated with automated spam campaigns and disposable phishing kits.",
+        "evidence": "TLD: .ga"
+      },
+      {
+        "id": "dns_unresolved",
+        "label": "Unresolved / Inactive Domain",
+        "severity": "low",
+        "description": "The domain does not currently resolve via authoritative public DNS. It may be dormant, private, or experiencing temporary network disruption.",
+        "evidence": "Host account-verification.ga has no active DNS records"
+      },
+      {
+        "id": "high_entropy",
+        "label": "Algorithmic Domain Pattern (DGA)",
+        "severity": "medium",
+        "description": "The domain name exhibits unusually high Shannon entropy, characteristic of Domain Generation Algorithms used by botnets.",
+        "evidence": "Entropy score: 4.0338"
+      }
+    ],
+    "domain_analysis": {
+      "domain": "account-verification.ga",
+      "subdomain": "paypal-security-update",
+      "tld": "ga",
+      "ip_addresses": [],
+      "dns_resolves": false,
+      "is_shortener": false,
+      "is_suspicious_tld": true,
+      "entropy": 4.0338
+    },
+    "ssl_analysis": {
+      "has_https": true,
+      "is_valid": false
+    },
+    "content_analysis": {
+      "checked": false,
+      "has_forms": false,
+      "has_password_field": false,
+      "external_form_action": false,
+      "empty_form_action": false,
+      "hidden_elements_count": 0,
+      "suspicious_iframes_count": 0,
+      "disabled_right_click": false,
+      "error_message": "Website content unreachable (getaddrinfo ENOTFOUND paypal-security-update.account-verification.ga). Partial heuristic analysis applied."
+    },
+    "scan_status": "partial",
+    "client_source": "web",
+    "created_at": "2026-10-30T16:14:56.918Z"
+  },
+  {
+    "_id": "scan_1793376896860_xn5gi",
+    "user_id": null,
+    "original_url": "http://paypal-security-update.account-verification.ga/login.php",
+    "normalized_url": "http://paypal-security-update.account-verification.ga/login.php",
+    "verdict": "phishing",
+    "risk_score": 85,
+    "ml_prediction": "phishing",
+    "ml_probability": 0.802,
+    "model_version": "Gradient Boosted Trees",
+    "detected_factors": [
+      {
+        "id": "brand_spoofing",
+        "label": "Brand Impersonation in Subdomain/Path",
+        "severity": "high",
+        "description": "A well-known brand keyword was found in the subdomain or path of an unrelated domain, a hallmark tactic of credential harvesters.",
+        "evidence": "Target domain: account-verification.ga, Subdomain: paypal-security-update"
+      },
+      {
+        "id": "suspicious_tld",
+        "label": "High-Risk Top Level Domain",
+        "severity": "high",
+        "description": "The domain uses \".ga\", a top-level domain frequently associated with automated spam campaigns and disposable phishing kits.",
+        "evidence": "TLD: .ga"
+      },
+      {
+        "id": "no_https",
+        "label": "Insecure Protocol (Plain HTTP)",
+        "severity": "medium",
+        "description": "Communication is not encrypted with HTTPS. Browsing or submitting sensitive info over plain HTTP exposes data to eavesdropping.",
+        "evidence": "Protocol: http://"
+      },
+      {
+        "id": "dns_unresolved",
+        "label": "Unresolved / Inactive Domain",
+        "severity": "low",
+        "description": "The domain does not currently resolve via authoritative public DNS. It may be dormant, private, or experiencing temporary network disruption.",
+        "evidence": "Host account-verification.ga has no active DNS records"
+      },
+      {
+        "id": "high_entropy",
+        "label": "Algorithmic Domain Pattern (DGA)",
+        "severity": "medium",
+        "description": "The domain name exhibits unusually high Shannon entropy, characteristic of Domain Generation Algorithms used by botnets.",
+        "evidence": "Entropy score: 4.0338"
+      }
+    ],
+    "domain_analysis": {
+      "domain": "account-verification.ga",
+      "subdomain": "paypal-security-update",
+      "tld": "ga",
+      "ip_addresses": [],
+      "dns_resolves": false,
+      "is_shortener": false,
+      "is_suspicious_tld": true,
+      "entropy": 4.0338
+    },
+    "ssl_analysis": {
+      "has_https": false,
+      "is_valid": false
+    },
+    "content_analysis": {
+      "checked": false,
+      "has_forms": false,
+      "has_password_field": false,
+      "external_form_action": false,
+      "empty_form_action": false,
+      "hidden_elements_count": 0,
+      "suspicious_iframes_count": 0,
+      "disabled_right_click": false,
+      "error_message": "Website content unreachable (getaddrinfo ENOTFOUND paypal-security-update.account-verification.ga). Partial heuristic analysis applied."
+    },
+    "scan_status": "partial",
+    "client_source": "web",
+    "created_at": "2026-10-30T16:14:56.858Z"
+  },
+  {
     "_id": "scan_1793359306428_gd9mh",
     "user_id": null,
     "original_url": "https://paypal.com",

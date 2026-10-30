@@ -7,9 +7,39 @@ const inFlightScans = new Map();        // url -> Promise
 const bypassedUrls = new Map();         // normalizedUrl -> timestamp
 const tabLastScannedUrl = new Map();    // tabId -> url
 
+async function getApiBase() {
+  const res = await chrome.storage.local.get(['apiBase']);
+  if (!res.apiBase || res.apiBase.includes('localhost:8000') || res.apiBase.includes('127.0.0.1:8000')) {
+    chrome.storage.local.set({ apiBase: DEFAULT_API_BASE });
+    return DEFAULT_API_BASE;
+  }
+  return res.apiBase;
+}
+
 // Clean up tab tracking when tabs are closed
 chrome.tabs.onRemoved.addListener((tabId) => {
   tabLastScannedUrl.delete(tabId);
+});
+
+// Update badge when user switches active tabs
+chrome.tabs.onActivated.addListener(async (activeInfo) => {
+  try {
+    const tab = await chrome.tabs.get(activeInfo.tabId);
+    if (!tab || !tab.url) return;
+
+    if (tab.url.includes('/warning/warning.html')) {
+      applyBadge('phishing', activeInfo.tabId);
+      return;
+    }
+
+    if (tab.url.startsWith('http://') || tab.url.startsWith('https://')) {
+      const normalized = normalizeUrl(tab.url);
+      const cached = scanCache.get(normalized);
+      if (cached) {
+        applyBadge(cached.data.verdict, activeInfo.tabId);
+      }
+    }
+  } catch {}
 });
 
 // Initialize extension state on startup / install
@@ -18,7 +48,8 @@ chrome.runtime.onInstalled.addListener(() => {
     if (result.protectionEnabled === undefined) {
       chrome.storage.local.set({ protectionEnabled: true });
     }
-    if (!result.apiBase) {
+    // Always default to cloud Render backend if unset or legacy localhost
+    if (!result.apiBase || result.apiBase.includes('localhost:8000')) {
       chrome.storage.local.set({ apiBase: DEFAULT_API_BASE });
     }
     if (!result.recentAlerts) {
@@ -60,20 +91,27 @@ function isLocalHost(rawUrl) {
   }
 }
 
-// Intercept navigation via tabs.onUpdated
-chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
-  // Check on URL change or loading start to protect immediately before rendering completes
+// Intercept navigation early before page loads via webNavigation
+chrome.webNavigation?.onBeforeNavigate.addListener(async (details) => {
+  if (details.frameId !== 0) return;
+  const targetUrl = details.url;
+  if (!targetUrl || (!targetUrl.startsWith('http://') && !targetUrl.startsWith('https://'))) return;
+
+  const res = await chrome.storage.local.get(['protectionEnabled']);
+  if (res.protectionEnabled === false) return;
+
+  const apiBase = await getApiBase();
+  await processNavigation(targetUrl, details.tabId, apiBase);
+});
+
+// Intercept navigation updates via tabs.onUpdated
+chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
   const targetUrl = changeInfo.url || (changeInfo.status === 'loading' ? tab.url : null);
   if (!targetUrl) return;
 
-  // Ignore internal Chrome schemes, extension pages, and non-http(s)
-  if (
-    targetUrl.startsWith('chrome://') ||
-    targetUrl.startsWith('chrome-extension://') ||
-    targetUrl.startsWith('about:') ||
-    targetUrl.startsWith('edge://') ||
-    targetUrl.startsWith('view-source:')
-  ) {
+  // STRICTLY allow only http and https web navigations!
+  // Any chrome://, chrome-error://, about:, chrome-extension:// must be ignored completely!
+  if (!targetUrl.startsWith('http://') && !targetUrl.startsWith('https://')) {
     return;
   }
 
@@ -85,11 +123,11 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
 
   tabLastScannedUrl.set(tabId, targetUrl);
 
-  chrome.storage.local.get(['protectionEnabled', 'apiBase'], async (res) => {
-    if (res.protectionEnabled === false) return;
-    const apiBase = res.apiBase || DEFAULT_API_BASE;
-    await processNavigation(targetUrl, tabId, apiBase);
-  });
+  const res = await chrome.storage.local.get(['protectionEnabled']);
+  if (res.protectionEnabled === false) return;
+
+  const apiBase = await getApiBase();
+  await processNavigation(targetUrl, tabId, apiBase);
 });
 
 async function processNavigation(url, tabId, apiBase) {
@@ -116,14 +154,15 @@ async function processNavigation(url, tabId, apiBase) {
   if (data.verdict === 'phishing' && data.risk_score >= 70) {
     console.warn(`[PhishGuard AI] Phishing Attack Blocked (${data.risk_score}/100): ${url}`);
     saveRecentAlert(data);
+    applyBadge('phishing', tabId);
 
     // Save warning data in storage so warning.js can access complete indicators
     const warningPayload = {
       url: data.url || url,
       risk_score: data.risk_score,
       verdict: data.verdict,
-      model_version: data.model_version || 'Machine Learning Engine',
-      ml_probability: data.ml_probability || 0.95,
+      model_version: data.model_version || 'Gradient Boosted Trees',
+      ml_probability: data.ml_probability || 0.85,
       factors: data.factors || [],
       timestamp: new Date().toISOString(),
     };
@@ -132,7 +171,7 @@ async function processNavigation(url, tabId, apiBase) {
     // Build extension warning URL
     const factorsJson = encodeURIComponent(JSON.stringify(data.factors || []));
     const warningPage = chrome.runtime.getURL(
-      `warning/warning.html?url=${encodeURIComponent(url)}&score=${data.risk_score}&verdict=${data.verdict}&model=${encodeURIComponent(data.model_version || 'Machine Learning')}&factors=${factorsJson}`
+      `warning/warning.html?url=${encodeURIComponent(url)}&score=${data.risk_score}&verdict=${data.verdict}&model=${encodeURIComponent(data.model_version || 'Gradient Boosted Trees')}&factors=${factorsJson}`
     );
 
     // Redirect the tab to the warning interstitial
@@ -146,6 +185,7 @@ async function processNavigation(url, tabId, apiBase) {
   if (data.verdict === 'suspicious') {
     console.warn(`[PhishGuard AI] Suspicious site warning (${data.risk_score}/100): ${url}`);
     saveRecentAlert(data);
+    applyBadge('suspicious', tabId);
     chrome.tabs.sendMessage(tabId, {
       type: 'PHISHGUARD_SECURITY_ALERT',
       data,
@@ -204,20 +244,19 @@ async function checkUrlSafety(url, tabId, apiBase) {
 }
 
 function applyBadge(verdict, tabId) {
-  if (verdict === 'safe') {
-    chrome.action.setBadgeText({ text: 'SAFE', tabId });
-    chrome.action.setBadgeBackgroundColor({ color: '#10B981', tabId });
-  } else if (verdict === 'suspicious') {
-    chrome.action.setBadgeText({ text: 'WARN', tabId });
-    chrome.action.setBadgeBackgroundColor({ color: '#F59E0B', tabId });
-  } else if (verdict === 'phishing') {
-    chrome.action.setBadgeText({ text: 'ALERT', tabId });
-    chrome.action.setBadgeBackgroundColor({ color: '#EF4444', tabId });
-  } else if (verdict === 'bypassed') {
-    chrome.action.setBadgeText({ text: 'ALLOW', tabId });
-    chrome.action.setBadgeBackgroundColor({ color: '#64748B', tabId });
+  const badgeConfig = {
+    safe: { text: 'SAFE', color: '#10B981' },
+    suspicious: { text: 'WARN', color: '#F59E0B' },
+    phishing: { text: 'ALERT', color: '#EF4444' },
+    bypassed: { text: 'ALLOW', color: '#64748B' },
+  }[verdict] || { text: '', color: '#000000' };
+
+  if (tabId) {
+    chrome.action.setBadgeText({ text: badgeConfig.text, tabId });
+    chrome.action.setBadgeBackgroundColor({ color: badgeConfig.color, tabId });
   } else {
-    chrome.action.setBadgeText({ text: '', tabId });
+    chrome.action.setBadgeText({ text: badgeConfig.text });
+    chrome.action.setBadgeBackgroundColor({ color: badgeConfig.color });
   }
 }
 

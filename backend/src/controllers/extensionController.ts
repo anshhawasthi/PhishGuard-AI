@@ -10,8 +10,19 @@ export async function analyzeForExtension(req: Request, res: Response): Promise<
       return;
     }
 
+    let targetToAnalyze = url.trim();
+
+    // If the URL is our dashboard inspection URL (e.g. /scans/live?url=... or /scans?url=...), extract the inspected target
+    try {
+      const parsedUrl = new URL(targetToAnalyze);
+      const embeddedUrl = parsedUrl.searchParams.get('url');
+      if (embeddedUrl && (embeddedUrl.startsWith('http://') || embeddedUrl.startsWith('https://'))) {
+        targetToAnalyze = embeddedUrl.trim();
+      }
+    } catch {}
+
     const result = await analyzeUrl({
-      url: url.trim(),
+      url: targetToAnalyze,
       clientSource: 'extension',
       skipContentFetch: false,
     });

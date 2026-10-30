@@ -16,9 +16,18 @@ export async function analyze(req: AuthenticatedRequest, res: Response): Promise
 
     const userId = req.user?.id || null;
     const clientSource = (req.body.source as any) || 'web';
+    let targetUrl = url.trim();
+
+    try {
+      const parsedUrl = new URL(targetUrl);
+      const embeddedUrl = parsedUrl.searchParams.get('url');
+      if (embeddedUrl && (embeddedUrl.startsWith('http://') || embeddedUrl.startsWith('https://'))) {
+        targetUrl = embeddedUrl.trim();
+      }
+    } catch {}
 
     const result = await analyzeUrl({
-      url: url.trim(),
+      url: targetUrl,
       userId,
       clientSource,
     });

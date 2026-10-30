@@ -1,5 +1,11 @@
 // PhishGuard AI – Warning Page Interstitial Controller
 document.addEventListener('DOMContentLoaded', async () => {
+  // Ensure the extension icon displays ALERT on the warning tab
+  try {
+    chrome.action.setBadgeText({ text: 'ALERT' });
+    chrome.action.setBadgeBackgroundColor({ color: '#EF4444' });
+  } catch {}
+
   const params = new URLSearchParams(window.location.search);
   let targetUrl = params.get('url') || '';
   let riskScore = params.get('score') || '';
