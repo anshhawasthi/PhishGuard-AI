@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Shield, Lock, Mail, User, AlertCircle, Sparkles } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 
 export const AuthModal: React.FC = () => {
+  const navigate = useNavigate();
   const { isAuthModalOpen, closeAuthModal, authMode, login, register } = useAuth();
   const [mode, setMode] = useState<'login' | 'register'>(authMode);
   const [fullName, setFullName] = useState('');
@@ -27,6 +29,7 @@ export const AuthModal: React.FC = () => {
     try {
       if (mode === 'login') {
         await login(email, password);
+        navigate('/dashboard');
       } else {
         if (!fullName.trim()) {
           setError('Please provide your full name');
@@ -34,9 +37,15 @@ export const AuthModal: React.FC = () => {
           return;
         }
         await register(fullName, email, password);
+        navigate('/dashboard');
       }
     } catch (err: any) {
-      setError(err.response?.data?.error || err.message || 'Authentication failed');
+      const msg = err.response?.data?.error || err.message;
+      if (msg === 'Network Error' || !err.response) {
+        setError('Cannot reach backend server. If using Render free tier, please allow ~30 seconds for it to wake up.');
+      } else {
+        setError(msg || 'Authentication failed');
+      }
     } finally {
       setSubmitting(false);
     }

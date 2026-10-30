@@ -67,7 +67,11 @@ function initSettingsPanel() {
   });
 
   saveBtn?.addEventListener('click', async () => {
-    const newApi = apiInput?.value.trim().replace(/\/$/, '') || DEFAULT_API_BASE;
+    let newApi = apiInput?.value.trim().replace(/\/$/, '') || DEFAULT_API_BASE;
+    if (newApi && !newApi.endsWith('/api')) {
+      newApi = `${newApi}/api`;
+      if (apiInput) apiInput.value = newApi;
+    }
     const newDash = dashInput?.value.trim().replace(/\/$/, '') || DEFAULT_DASHBOARD_URL;
     await chrome.storage.local.set({ apiBase: newApi, dashboardUrl: newDash });
 
@@ -102,18 +106,31 @@ async function checkBackendStatus() {
   const text = document.getElementById('api-status-text');
 
   try {
-    const apiBase = await getApiBase();
-    const res = await fetch(`${apiBase}/extension/status`, { signal: AbortSignal.timeout(3000) });
+    let apiBase = await getApiBase();
+    if (apiBase && !apiBase.endsWith('/api')) {
+      apiBase = `${apiBase.replace(/\/$/, '')}/api`;
+    }
+
+    if (text) text.textContent = 'Checking...';
+    if (dot) dot.style.background = '#F59E0B';
+
+    const res = await fetch(`${apiBase}/extension/status`, { signal: AbortSignal.timeout(10000) });
     if (res.ok) {
       const data = await res.json();
-      dot.className = 'status-dot';
-      text.textContent = 'Engine Online';
+      if (dot) {
+        dot.className = 'status-dot';
+        dot.style.background = '#10B981';
+      }
+      if (text) text.textContent = 'Engine Online';
     } else {
       throw new Error('API status not 200');
     }
   } catch {
-    dot.className = 'status-dot offline';
-    text.textContent = 'Backend Offline';
+    if (dot) {
+      dot.className = 'status-dot offline';
+      dot.style.background = '#EF4444';
+    }
+    if (text) text.textContent = 'Backend Offline';
   }
 }
 

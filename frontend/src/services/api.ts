@@ -1,13 +1,19 @@
 import axios from 'axios';
 import { IScanResult, IDashboardStats, IModelPerformance, IUser } from '../types';
 
-export const getApiBaseUrl = (): string => {
-  const url = import.meta.env.VITE_API_URL as string | undefined;
-  if (!url) return '';
-  return url.replace(/\/api\/?$/, '');
+export const normalizeApiUrl = (raw?: string): string => {
+  if (!raw || !raw.trim()) return '/api';
+  const clean = raw.trim().replace(/\/+$/, '');
+  return clean.endsWith('/api') ? clean : `${clean}/api`;
 };
 
-const apiBase = (import.meta.env.VITE_API_URL as string | undefined) || '/api';
+export const getApiBaseUrl = (): string => {
+  const url = import.meta.env.VITE_API_URL as string | undefined;
+  if (!url || !url.trim()) return '';
+  return url.trim().replace(/\/+$/, '').replace(/\/api\/?$/, '');
+};
+
+const apiBase = normalizeApiUrl(import.meta.env.VITE_API_URL as string | undefined);
 
 const api = axios.create({
   baseURL: apiBase,

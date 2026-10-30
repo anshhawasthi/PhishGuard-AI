@@ -16,7 +16,15 @@ import extensionRoutes from './routes/extensionRoutes';
 const app = express();
 
 // Middleware
-app.use(cors({ origin: config.corsOrigin, credentials: true }));
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      // Automatically reflect request origin to prevent Chrome Extension / Vercel CORS blocks
+      callback(null, true);
+    },
+    credentials: true,
+  })
+);
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 app.use(morgan('dev'));

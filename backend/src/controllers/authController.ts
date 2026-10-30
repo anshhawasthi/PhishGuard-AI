@@ -108,10 +108,23 @@ export async function login(req: Request, res: Response): Promise<void> {
       return;
     }
 
-    const user = await User.findOne({ email: email.toLowerCase() });
+    let user = await User.findOne({ email: email.toLowerCase() });
     if (!user) {
-      res.status(401).json({ error: 'Invalid email or password' });
-      return;
+      // Auto-provision admin if matching default admin credentials
+      if (email.toLowerCase() === config.adminEmail.toLowerCase() && password === config.adminPassword) {
+        const salt = await bcrypt.genSalt(10);
+        const password_hash = await bcrypt.hash(config.adminPassword, salt);
+        user = await User.create({
+          full_name: 'System Administrator',
+          email: config.adminEmail.toLowerCase(),
+          password_hash,
+          role: 'admin',
+          is_active: true,
+        });
+      } else {
+        res.status(401).json({ error: 'Invalid email or password. If you do not have an account, please click Register.' });
+        return;
+      }
     }
 
     if (!user.is_active) {
