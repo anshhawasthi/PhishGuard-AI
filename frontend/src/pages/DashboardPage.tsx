@@ -26,7 +26,7 @@ import {
   YAxis,
   Tooltip
 } from 'recharts';
-import { dashboardApi, scanApi } from '../services/api';
+import { dashboardApi, scanApi, getReportUrl } from '../services/api';
 import { IDashboardStats, IScanResult } from '../types';
 
 export const DashboardPage: React.FC = () => {
@@ -385,7 +385,7 @@ export const DashboardPage: React.FC = () => {
                             <Eye className="w-4 h-4" />
                           </button>
                           <a
-                            href={`/api/scans/${scan._id}/report`}
+                            href={getReportUrl(scan._id || '')}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="p-1 text-slate-400 hover:text-purple-400 transition-colors"

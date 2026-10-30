@@ -1,12 +1,24 @@
 // PhishGuard AI – Popup Controller
-const API_BASE = 'http://localhost:8000/api';
+const DEFAULT_API_BASE = 'http://localhost:8000/api';
+const DEFAULT_DASHBOARD_URL = 'http://localhost:5173/dashboard';
 let currentTab = null;
+
+async function getApiBase() {
+  const res = await chrome.storage.local.get(['apiBase']);
+  return res.apiBase || DEFAULT_API_BASE;
+}
+
+async function getDashboardUrl() {
+  const res = await chrome.storage.local.get(['dashboardUrl']);
+  return res.dashboardUrl || DEFAULT_DASHBOARD_URL;
+}
 
 document.addEventListener('DOMContentLoaded', async () => {
   await initActiveTab();
   await checkBackendStatus();
   loadProtectionToggle();
   loadRecentAlerts();
+  initSettingsPanel();
 
   document.getElementById('btn-scan')?.addEventListener('click', () => {
     if (currentTab && currentTab.url) {
@@ -28,10 +40,46 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   });
 
-  document.getElementById('btn-open-dashboard')?.addEventListener('click', () => {
-    chrome.tabs.create({ url: 'http://localhost:5173/dashboard' });
+  document.getElementById('btn-open-dashboard')?.addEventListener('click', async () => {
+    const dashboardUrl = await getDashboardUrl();
+    chrome.tabs.create({ url: dashboardUrl });
   });
 });
+
+function initSettingsPanel() {
+  const toggleBtn = document.getElementById('btn-settings-toggle');
+  const panel = document.getElementById('settings-panel');
+  const saveBtn = document.getElementById('btn-save-settings');
+  const apiInput = document.getElementById('setting-api-url');
+  const dashInput = document.getElementById('setting-dashboard-url');
+  const savedMsg = document.getElementById('settings-saved-msg');
+
+  // Prepopulate current values
+  chrome.storage.local.get(['apiBase', 'dashboardUrl'], (res) => {
+    if (apiInput) apiInput.value = res.apiBase || DEFAULT_API_BASE;
+    if (dashInput) dashInput.value = res.dashboardUrl || DEFAULT_DASHBOARD_URL;
+  });
+
+  toggleBtn?.addEventListener('click', () => {
+    if (panel) {
+      panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+    }
+  });
+
+  saveBtn?.addEventListener('click', async () => {
+    const newApi = apiInput?.value.trim().replace(/\/$/, '') || DEFAULT_API_BASE;
+    const newDash = dashInput?.value.trim().replace(/\/$/, '') || DEFAULT_DASHBOARD_URL;
+    await chrome.storage.local.set({ apiBase: newApi, dashboardUrl: newDash });
+
+    if (savedMsg) {
+      savedMsg.style.display = 'inline';
+      setTimeout(() => {
+        savedMsg.style.display = 'none';
+      }, 2500);
+    }
+    await checkBackendStatus();
+  });
+}
 
 async function initActiveTab() {
   const tabs = await chrome.tabs.query({ active: true, currentWindow: true });
@@ -54,7 +102,8 @@ async function checkBackendStatus() {
   const text = document.getElementById('api-status-text');
 
   try {
-    const res = await fetch(`${API_BASE}/extension/status`, { signal: AbortSignal.timeout(2000) });
+    const apiBase = await getApiBase();
+    const res = await fetch(`${apiBase}/extension/status`, { signal: AbortSignal.timeout(3000) });
     if (res.ok) {
       const data = await res.json();
       dot.className = 'status-dot';
@@ -85,7 +134,8 @@ async function triggerScan(url, tabId) {
   if (btn) btn.textContent = 'Scanning Website...';
 
   try {
-    const response = await fetch(`${API_BASE}/extension/analyze`, {
+    const apiBase = await getApiBase();
+    const response = await fetch(`${apiBase}/extension/analyze`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ url }),

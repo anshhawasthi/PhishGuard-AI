@@ -12,6 +12,9 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install --omit=dev
 COPY --from=builder /app/dist ./dist
+COPY trained_models/ ./trained_models/
+COPY datasets/ ./datasets/
+COPY data/ ./data/
 
 EXPOSE 8000
 CMD ["node", "dist/server.js"]

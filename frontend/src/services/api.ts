@@ -1,12 +1,30 @@
 import axios from 'axios';
 import { IScanResult, IDashboardStats, IModelPerformance, IUser } from '../types';
 
+export const getApiBaseUrl = (): string => {
+  const url = import.meta.env.VITE_API_URL as string | undefined;
+  if (!url) return '';
+  return url.replace(/\/api\/?$/, '');
+};
+
+const apiBase = (import.meta.env.VITE_API_URL as string | undefined) || '/api';
+
 const api = axios.create({
-  baseURL: '/api',
+  baseURL: apiBase,
   headers: {
     'Content-Type': 'application/json',
   },
 });
+
+export const getReportUrl = (scanId: string): string => {
+  const base = getApiBaseUrl();
+  return `${base}/api/scans/${scanId}/report`;
+};
+
+export const getLiveReportUrl = (url: string): string => {
+  const base = getApiBaseUrl();
+  return `${base}/api/scans/live/report?url=${encodeURIComponent(url)}`;
+};
 
 // Attach JWT token from localStorage if present
 api.interceptors.request.use((config) => {
@@ -43,7 +61,7 @@ export const scanApi = {
       headers: { 'Content-Type': 'multipart/form-data' },
     });
   },
-  downloadReportUrl: (scanId: string) => `/api/scans/${scanId}/report`,
+  downloadReportUrl: (scanId: string) => getReportUrl(scanId),
 };
 
 export const dashboardApi = {

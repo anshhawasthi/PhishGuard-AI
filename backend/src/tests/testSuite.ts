@@ -4,6 +4,7 @@ import { LogisticRegressionModel } from '../ml/logisticRegression';
 import { DecisionTreeModel } from '../ml/decisionTree';
 import { RandomForestModel } from '../ml/randomForest';
 import { GradientBoostingModel } from '../ml/gradientBoosting';
+import { StandardScaler } from '../ml/scaler';
 import { evaluateModel } from '../ml/evaluator';
 import { PRELOADED_SAMPLES } from '../ml/preloadedDataset';
 import { computeRiskScore } from '../services/riskScorer';
@@ -65,31 +66,33 @@ async function runTests() {
   const entropy = calculateEntropy('abcdefghijklmnopqrstuvwxyz0123456789');
   assert(entropy > 4.5, 'Calculates high Shannon entropy for random strings');
 
-  // 3. Machine Learning Models Tests
+  // 3. Machine Learning Models Tests (Stratified Train/Test Split)
   console.log('\n--- 3. Testing Machine Learning Algorithms ---');
-  // Extract features for preloaded training set
-  const X: number[][] = [];
-  const y: number[] = [];
-  for (const s of PRELOADED_SAMPLES) {
-    X.push(extractUrlFeatures(s.url).vector);
-    y.push(s.label);
-  }
+  const posSamples = PRELOADED_SAMPLES.filter((s) => s.label === 1);
+  const negSamples = PRELOADED_SAMPLES.filter((s) => s.label === 0);
 
-  // 80/20 train/test with stratified / random shuffle
-  const indices = Array.from({ length: X.length }, (_, i) => i);
-  indices.sort(() => 0.5 - Math.random());
-  const split = Math.floor(X.length * 0.8);
-  const trainIdx = indices.slice(0, split);
-  const testIdx = indices.slice(split);
-  const trainX = trainIdx.map((i) => X[i]);
-  const trainY = trainIdx.map((i) => y[i]);
-  const testX = testIdx.map((i) => X[i]);
-  const testY = testIdx.map((i) => y[i]);
+  const trainSamples = [
+    ...posSamples.slice(0, Math.floor(posSamples.length * 0.8)),
+    ...negSamples.slice(0, Math.floor(negSamples.length * 0.8)),
+  ];
+  const testSamples = [
+    ...posSamples.slice(Math.floor(posSamples.length * 0.8)),
+    ...negSamples.slice(Math.floor(negSamples.length * 0.8)),
+  ];
+
+  const trainX = trainSamples.map((s) => extractUrlFeatures(s.url).vector);
+  const trainY = trainSamples.map((s) => s.label);
+  const testX = testSamples.map((s) => extractUrlFeatures(s.url).vector);
+  const testY = testSamples.map((s) => s.label);
+
+  const scaler = new StandardScaler();
+  const scaledTrainX = scaler.fitTransform(trainX);
+  const scaledTestX = scaler.transform(testX);
 
   // Model 1: Logistic Regression
-  const lr = new LogisticRegressionModel(0.1, 200);
-  await lr.train(trainX, trainY);
-  const lrEval = evaluateModel(lr, testX, testY);
+  const lr = new LogisticRegressionModel(0.1, 300);
+  await lr.train(scaledTrainX, trainY);
+  const lrEval = evaluateModel(lr, scaledTestX, testY);
   assert(lrEval.accuracy >= 0.7, `Logistic Regression Accuracy >= 70% (Actual: ${(lrEval.accuracy * 100).toFixed(1)}%)`);
 
   // Model 2: Decision Tree

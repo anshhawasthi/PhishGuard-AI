@@ -16,11 +16,30 @@
           <div class="brand-tagline">Browser Protection</div>
         </div>
       </div>
-      <div class="status-indicator">
-        <span class="status-dot online" id="api-status-dot"></span>
-        <span class="status-text" id="api-status-text">Online</span>
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <div class="status-indicator">
+          <span class="status-dot online" id="api-status-dot"></span>
+          <span class="status-text" id="api-status-text">Online</span>
+        </div>
+        <button id="btn-settings-toggle" title="Deployment / API Settings" style="background: none; border: none; cursor: pointer; font-size: 14px; padding: 2px; color: #94A3B8;">⚙️</button>
       </div>
     </header>
+
+    <!-- Cloud / Deployment Settings Drawer -->
+    <div id="settings-panel" style="display: none; background: rgba(15, 23, 42, 0.95); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 8px; padding: 10px; margin-bottom: 12px; font-size: 11px;">
+      <div style="font-weight: 600; color: #38BDF8; margin-bottom: 6px; display: flex; justify-content: space-between;">
+        <span>Cloud Deployment Settings</span>
+        <span style="font-size: 10px; color: #64748B;">Manifest V3</span>
+      </div>
+      <label style="color: #94A3B8; display: block; margin-bottom: 2px;">Backend API Endpoint:</label>
+      <input type="text" id="setting-api-url" placeholder="http://localhost:8000/api" style="width: 100%; box-sizing: border-box; background: #0B1120; border: 1px solid #334155; color: #F8FAFC; padding: 4px 6px; border-radius: 4px; font-size: 11px; margin-bottom: 6px;">
+      <label style="color: #94A3B8; display: block; margin-bottom: 2px;">Frontend Dashboard URL:</label>
+      <input type="text" id="setting-dashboard-url" placeholder="http://localhost:5173/dashboard" style="width: 100%; box-sizing: border-box; background: #0B1120; border: 1px solid #334155; color: #F8FAFC; padding: 4px 6px; border-radius: 4px; font-size: 11px; margin-bottom: 8px;">
+      <div style="display: flex; align-items: center; justify-content: space-between;">
+        <button id="btn-save-settings" style="background: #3B82F6; color: white; border: none; padding: 4px 10px; border-radius: 4px; cursor: pointer; font-weight: 600; font-size: 11px;">Save & Reconnect</button>
+        <span id="settings-saved-msg" style="color: #10B981; display: none;">Saved!</span>
+      </div>
+    </div>
 
     <!-- Protection Toggle -->
     <div class="toggle-card">

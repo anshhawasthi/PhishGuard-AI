@@ -18,7 +18,7 @@ import {
   Info,
   Server
 } from 'lucide-react';
-import { scanApi } from '../services/api';
+import { scanApi, getReportUrl, getLiveReportUrl } from '../services/api';
 import { IScanResult } from '../types';
 import { RiskGauge } from '../components/RiskGauge';
 
@@ -78,9 +78,9 @@ Timestamp: ${new Date(scan.created_at).toLocaleString()}`;
     if (!scan) return;
     const scanIdentifier = scan._id || scan.scanId;
     if (scanIdentifier) {
-      window.open(`/api/scans/${scanIdentifier}/report`, '_blank');
+      window.open(getReportUrl(scanIdentifier), '_blank');
     } else {
-      window.open(`/api/scans/live/report?url=${encodeURIComponent(scan.original_url)}`, '_blank');
+      window.open(getLiveReportUrl(scan.original_url), '_blank');
     }
   };
 

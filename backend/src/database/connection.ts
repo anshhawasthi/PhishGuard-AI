@@ -9,9 +9,10 @@ export async function connectDB(): Promise<boolean> {
   }
 
   try {
+    const isAtlas = config.mongodbUri.includes('mongodb+srv') || config.nodeEnv === 'production';
     const opts: mongoose.ConnectOptions = {
-      serverSelectionTimeoutMS: 2000,
-      connectTimeoutMS: 4000,
+      serverSelectionTimeoutMS: isAtlas ? 10000 : 2500,
+      connectTimeoutMS: isAtlas ? 15000 : 5000,
     };
 
     console.log(`[Database] Attempting connection to MongoDB at: ${config.mongodbUri.replace(/\/\/([^:]+):([^@]+)@/, '//$1:***@')}`);
