@@ -1,15 +1,16 @@
 import axios from 'axios';
 import { IScanResult, IDashboardStats, IModelPerformance, IUser } from '../types';
 
+const DEFAULT_PROD_API_URL = 'https://phishguard-backend-3oao.onrender.com/api';
+
 export const normalizeApiUrl = (raw?: string): string => {
-  if (!raw || !raw.trim()) return '/api';
-  const clean = raw.trim().replace(/\/+$/, '');
+  const target = raw && raw.trim() ? raw.trim() : (import.meta.env.DEV ? '/api' : DEFAULT_PROD_API_URL);
+  const clean = target.replace(/\/+$/, '');
   return clean.endsWith('/api') ? clean : `${clean}/api`;
 };
 
 export const getApiBaseUrl = (): string => {
-  const url = import.meta.env.VITE_API_URL as string | undefined;
-  if (!url || !url.trim()) return '';
+  const url = (import.meta.env.VITE_API_URL as string | undefined) || (import.meta.env.DEV ? '' : DEFAULT_PROD_API_URL);
   return url.trim().replace(/\/+$/, '').replace(/\/api\/?$/, '');
 };
 

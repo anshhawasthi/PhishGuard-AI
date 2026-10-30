@@ -1,5 +1,5 @@
 // PhishGuard AI – Background Service Worker (Manifest V3)
-const DEFAULT_API_BASE = 'http://localhost:8000/api';
+const DEFAULT_API_BASE = 'https://phishguard-backend-3oao.onrender.com/api';
 
 // Memory caches
 const scanCache = new Map();            // url -> { data, timestamp }

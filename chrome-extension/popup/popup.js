@@ -1,6 +1,6 @@
 // PhishGuard AI – Popup Controller
-const DEFAULT_API_BASE = 'http://localhost:8000/api';
-const DEFAULT_DASHBOARD_URL = 'http://localhost:5173/dashboard';
+const DEFAULT_API_BASE = 'https://phishguard-backend-3oao.onrender.com/api';
+const DEFAULT_DASHBOARD_URL = 'https://phish-guard-ai-kappa-navy.vercel.app/dashboard';
 let currentTab = null;
 
 async function getApiBase() {
