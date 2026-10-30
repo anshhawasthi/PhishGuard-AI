@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PhishGuard AI</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-container">
+    <!-- Header -->
+    <header class="header">
+      <div class="brand">
+        <div class="brand-shield">🛡️</div>
+        <div>
+          <div class="brand-name">PhishGuard AI</div>
+          <div class="brand-tagline">Browser Protection</div>
+        </div>
+      </div>
+      <div class="status-indicator">
+        <span class="status-dot online" id="api-status-dot"></span>
+        <span class="status-text" id="api-status-text">Online</span>
+      </div>
+    </header>
+
+    <!-- Protection Toggle -->
+    <div class="toggle-card">
+      <div class="toggle-info">
+        <span class="toggle-label">Real-Time Protection</span>
+        <span class="toggle-sub" id="toggle-sub">AI Engine Monitoring Active</span>
+      </div>
+      <label class="switch">
+        <input type="checkbox" id="protection-toggle" checked>
+        <span class="slider round"></span>
+      </label>
+    </div>
+
+    <!-- Active Tab Box -->
+    <div class="url-card">
+      <div class="card-title">CURRENT TAB</div>
+      <div class="active-url" id="active-url">Reading active tab...</div>
+    </div>
+
+    <!-- Scan Results Card -->
+    <div class="result-card" id="result-card">
+      <div class="score-container">
+        <div class="score-circle safe" id="score-circle">
+          <span class="score-num" id="score-num">--</span>
+          <span class="score-sub">RISK</span>
+        </div>
+        <div class="verdict-box">
+          <div class="verdict-pill safe" id="verdict-pill">NOT SCANNED</div>
+          <div class="verdict-model" id="verdict-model">Model: Ready</div>
+        </div>
+      </div>
+
+      <div class="factors-preview" id="factors-preview">
+        <!-- Injected via popup.js -->
+      </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="actions">
+      <button class="btn btn-scan" id="btn-scan">
+        <span class="btn-icon">⚡</span> Scan Website Now
+      </button>
+      <button class="btn btn-secondary" id="btn-open-dashboard">
+        Open Dashboard ↗
+      </button>
+    </div>
+
+    <!-- Recent Alerts -->
+    <div class="alerts-section">
+      <div class="section-header">
+        <span>RECENT DETECTIONS</span>
+        <span class="clear-link" id="clear-alerts">Clear</span>
+      </div>
+      <div class="alerts-list" id="alerts-list">
+        <div class="empty-state">No threats detected recently</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

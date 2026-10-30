@@ -1,0 +1,1418 @@
+{
+  "name": "Random Forest",
+  "numTrees": 25,
+  "maxDepth": 7,
+  "minSamplesSplit": 3,
+  "trees": [
+    {
+      "name": "Decision Tree",
+      "maxDepth": 7,
+      "minSamplesSplit": 3,
+      "root": {
+        "isLeaf": false,
+        "featureIndex": 18,
+        "threshold": -0.031265269974036114,
+        "gain": 0.48779296875,
+        "left": {
+          "isLeaf": true,
+          "prediction": 1,
+          "probability": 1
+        },
+        "right": {
+          "isLeaf": true,
+          "prediction": 0,
+          "probability": 0
+        },
+        "probability": 0.421875,
+        "prediction": 0
+      },
+      "featureImportancesMap": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0.48779296875,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "Decision Tree",
+      "maxDepth": 7,
+      "minSamplesSplit": 3,
+      "root": {
+        "isLeaf": false,
+        "featureIndex": 18,
+        "threshold": -0.031265269974036114,
+        "gain": 0.49951171875,
+        "left": {
+          "isLeaf": true,
+          "prediction": 1,
+          "probability": 1
+        },
+        "right": {
+          "isLeaf": true,
+          "prediction": 0,
+          "probability": 0
+        },
+        "probability": 0.484375,
+        "prediction": 0
+      },
+      "featureImportancesMap": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0.49951171875,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "Decision Tree",
+      "maxDepth": 7,
+      "minSamplesSplit": 3,
+      "root": {
+        "isLeaf": false,
+        "featureIndex": 18,
+        "threshold": -0.031265269974036114,
+        "gain": 0.498046875,
+        "left": {
+          "isLeaf": true,
+          "prediction": 1,
+          "probability": 1
+        },
+        "right": {
+          "isLeaf": true,
+          "prediction": 0,
+          "probability": 0
+        },
+        "probability": 0.53125,
+        "prediction": 1
+      },
+      "featureImportancesMap": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0.498046875,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "Decision Tree",
+      "maxDepth": 7,
+      "minSamplesSplit": 3,
+      "root": {
+        "isLeaf": false,
+        "featureIndex": 18,
+        "threshold": -0.031265269974036114,
+        "gain": 0.49560546875,
+        "left": {
+          "isLeaf": true,
+          "prediction": 1,
+          "probability": 1
+        },
+        "right": {
+          "isLeaf": true,
+          "prediction": 0,
+          "probability": 0
+        },
+        "probability": 0.453125,
+        "prediction": 0
+      },
+      "featureImportancesMap": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0.49560546875,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "Decision Tree",
+      "maxDepth": 7,
+      "minSamplesSplit": 3,
+      "root": {
+        "isLeaf": false,
+        "featureIndex": 18,
+        "threshold": -0.031265269974036114,
+        "gain": 0.49951171875,
+        "left": {
+          "isLeaf": true,
+          "prediction": 1,
+          "probability": 1
+        },
+        "right": {
+          "isLeaf": true,
+          "prediction": 0,
+          "probability": 0
+        },
+        "probability": 0.484375,
+        "prediction": 0
+      },
+      "featureImportancesMap": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0.49951171875,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "Decision Tree",
+      "maxDepth": 7,
+      "minSamplesSplit": 3,
+      "root": {
+        "isLeaf": false,
+        "featureIndex": 18,
+        "threshold": -0.031265269974036114,
+        "gain": 0.47607421875,
+        "left": {
+          "isLeaf": true,
+          "prediction": 1,
+          "probability": 1
+        },
+        "right": {
+          "isLeaf": true,
+          "prediction": 0,
+          "probability": 0
+        },
+        "probability": 0.390625,
+        "prediction": 0
+      },
+      "featureImportancesMap": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0.47607421875,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "Decision Tree",
+      "maxDepth": 7,
+      "minSamplesSplit": 3,
+      "root": {
+        "isLeaf": false,
+        "featureIndex": 18,
+        "threshold": -0.031265269974036114,
+        "gain": 0.482421875,
+        "left": {
+          "isLeaf": true,
+          "prediction": 1,
+          "probability": 1
+        },
+        "right": {
+          "isLeaf": true,
+          "prediction": 0,
+          "probability": 0
+        },
+        "probability": 0.40625,
+        "prediction": 0
+      },
+      "featureImportancesMap": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0.482421875,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "Decision Tree",
+      "maxDepth": 7,
+      "minSamplesSplit": 3,
+      "root": {
+        "isLeaf": false,
+        "featureIndex": 18,
+        "threshold": -0.031265269974036114,
+        "gain": 0.47607421875,
+        "left": {
+          "isLeaf": true,
+          "prediction": 1,
+          "probability": 1
+        },
+        "right": {
+          "isLeaf": true,
+          "prediction": 0,
+          "probability": 0
+        },
+        "probability": 0.390625,
+        "prediction": 0
+      },
+      "featureImportancesMap": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0.47607421875,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "Decision Tree",
+      "maxDepth": 7,
+      "minSamplesSplit": 3,
+      "root": {
+        "isLeaf": false,
+        "featureIndex": 18,
+        "threshold": -0.031265269974036114,
+        "gain": 0.46875,
+        "left": {
+          "isLeaf": true,
+          "prediction": 1,
+          "probability": 1
+        },
+        "right": {
+          "isLeaf": true,
+          "prediction": 0,
+          "probability": 0
+        },
+        "probability": 0.375,
+        "prediction": 0
+      },
+      "featureImportancesMap": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0.46875,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "Decision Tree",
+      "maxDepth": 7,
+      "minSamplesSplit": 3,
+      "root": {
+        "isLeaf": false,
+        "featureIndex": 18,
+        "threshold": -0.031265269974036114,
+        "gain": 0.5,
+        "left": {
+          "isLeaf": true,
+          "prediction": 1,
+          "probability": 1
+        },
+        "right": {
+          "isLeaf": true,
+          "prediction": 0,
+          "probability": 0
+        },
+        "probability": 0.5,
+        "prediction": 1
+      },
+      "featureImportancesMap": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0.5,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "Decision Tree",
+      "maxDepth": 7,
+      "minSamplesSplit": 3,
+      "root": {
+        "isLeaf": false,
+        "featureIndex": 18,
+        "threshold": -0.031265269974036114,
+        "gain": 0.4921875,
+        "left": {
+          "isLeaf": true,
+          "prediction": 1,
+          "probability": 1
+        },
+        "right": {
+          "isLeaf": true,
+          "prediction": 0,
+          "probability": 0
+        },
+        "probability": 0.5625,
+        "prediction": 1
+      },
+      "featureImportancesMap": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0.4921875,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "Decision Tree",
+      "maxDepth": 7,
+      "minSamplesSplit": 3,
+      "root": {
+        "isLeaf": false,
+        "featureIndex": 18,
+        "threshold": -0.031265269974036114,
+        "gain": 0.4921875,
+        "left": {
+          "isLeaf": true,
+          "prediction": 1,
+          "probability": 1
+        },
+        "right": {
+          "isLeaf": true,
+          "prediction": 0,
+          "probability": 0
+        },
+        "probability": 0.5625,
+        "prediction": 1
+      },
+      "featureImportancesMap": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0.4921875,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "Decision Tree",
+      "maxDepth": 7,
+      "minSamplesSplit": 3,
+      "root": {
+        "isLeaf": false,
+        "featureIndex": 18,
+        "threshold": -0.031265269974036114,
+        "gain": 0.49951171875,
+        "left": {
+          "isLeaf": true,
+          "prediction": 1,
+          "probability": 1
+        },
+        "right": {
+          "isLeaf": true,
+          "prediction": 0,
+          "probability": 0
+        },
+        "probability": 0.515625,
+        "prediction": 1
+      },
+      "featureImportancesMap": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0.49951171875,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "Decision Tree",
+      "maxDepth": 7,
+      "minSamplesSplit": 3,
+      "root": {
+        "isLeaf": false,
+        "featureIndex": 18,
+        "threshold": -0.031265269974036114,
+        "gain": 0.498046875,
+        "left": {
+          "isLeaf": true,
+          "prediction": 1,
+          "probability": 1
+        },
+        "right": {
+          "isLeaf": true,
+          "prediction": 0,
+          "probability": 0
+        },
+        "probability": 0.46875,
+        "prediction": 0
+      },
+      "featureImportancesMap": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0.498046875,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "Decision Tree",
+      "maxDepth": 7,
+      "minSamplesSplit": 3,
+      "root": {
+        "isLeaf": false,
+        "featureIndex": 18,
+        "threshold": -0.031265269974036114,
+        "gain": 0.5,
+        "left": {
+          "isLeaf": true,
+          "prediction": 1,
+          "probability": 1
+        },
+        "right": {
+          "isLeaf": true,
+          "prediction": 0,
+          "probability": 0
+        },
+        "probability": 0.5,
+        "prediction": 1
+      },
+      "featureImportancesMap": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0.5,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "Decision Tree",
+      "maxDepth": 7,
+      "minSamplesSplit": 3,
+      "root": {
+        "isLeaf": false,
+        "featureIndex": 18,
+        "threshold": -0.031265269974036114,
+        "gain": 0.5,
+        "left": {
+          "isLeaf": true,
+          "prediction": 1,
+          "probability": 1
+        },
+        "right": {
+          "isLeaf": true,
+          "prediction": 0,
+          "probability": 0
+        },
+        "probability": 0.5,
+        "prediction": 1
+      },
+      "featureImportancesMap": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0.5,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "Decision Tree",
+      "maxDepth": 7,
+      "minSamplesSplit": 3,
+      "root": {
+        "isLeaf": false,
+        "featureIndex": 18,
+        "threshold": -0.031265269974036114,
+        "gain": 0.47607421875,
+        "left": {
+          "isLeaf": true,
+          "prediction": 1,
+          "probability": 1
+        },
+        "right": {
+          "isLeaf": true,
+          "prediction": 0,
+          "probability": 0
+        },
+        "probability": 0.609375,
+        "prediction": 1
+      },
+      "featureImportancesMap": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0.47607421875,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "Decision Tree",
+      "maxDepth": 7,
+      "minSamplesSplit": 3,
+      "root": {
+        "isLeaf": false,
+        "featureIndex": 18,
+        "threshold": -0.031265269974036114,
+        "gain": 0.49560546875,
+        "left": {
+          "isLeaf": true,
+          "prediction": 1,
+          "probability": 1
+        },
+        "right": {
+          "isLeaf": true,
+          "prediction": 0,
+          "probability": 0
+        },
+        "probability": 0.453125,
+        "prediction": 0
+      },
+      "featureImportancesMap": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0.49560546875,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "Decision Tree",
+      "maxDepth": 7,
+      "minSamplesSplit": 3,
+      "root": {
+        "isLeaf": false,
+        "featureIndex": 18,
+        "threshold": -0.031265269974036114,
+        "gain": 0.498046875,
+        "left": {
+          "isLeaf": true,
+          "prediction": 1,
+          "probability": 1
+        },
+        "right": {
+          "isLeaf": true,
+          "prediction": 0,
+          "probability": 0
+        },
+        "probability": 0.53125,
+        "prediction": 1
+      },
+      "featureImportancesMap": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0.498046875,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "Decision Tree",
+      "maxDepth": 7,
+      "minSamplesSplit": 3,
+      "root": {
+        "isLeaf": false,
+        "featureIndex": 18,
+        "threshold": -0.031265269974036114,
+        "gain": 0.451171875,
+        "left": {
+          "isLeaf": true,
+          "prediction": 1,
+          "probability": 1
+        },
+        "right": {
+          "isLeaf": true,
+          "prediction": 0,
+          "probability": 0
+        },
+        "probability": 0.34375,
+        "prediction": 0
+      },
+      "featureImportancesMap": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0.451171875,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "Decision Tree",
+      "maxDepth": 7,
+      "minSamplesSplit": 3,
+      "root": {
+        "isLeaf": false,
+        "featureIndex": 18,
+        "threshold": -0.031265269974036114,
+        "gain": 0.4921875,
+        "left": {
+          "isLeaf": true,
+          "prediction": 1,
+          "probability": 1
+        },
+        "right": {
+          "isLeaf": true,
+          "prediction": 0,
+          "probability": 0
+        },
+        "probability": 0.4375,
+        "prediction": 0
+      },
+      "featureImportancesMap": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0.4921875,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "Decision Tree",
+      "maxDepth": 7,
+      "minSamplesSplit": 3,
+      "root": {
+        "isLeaf": false,
+        "featureIndex": 18,
+        "threshold": -0.031265269974036114,
+        "gain": 0.4921875,
+        "left": {
+          "isLeaf": true,
+          "prediction": 1,
+          "probability": 1
+        },
+        "right": {
+          "isLeaf": true,
+          "prediction": 0,
+          "probability": 0
+        },
+        "probability": 0.4375,
+        "prediction": 0
+      },
+      "featureImportancesMap": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0.4921875,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "Decision Tree",
+      "maxDepth": 7,
+      "minSamplesSplit": 3,
+      "root": {
+        "isLeaf": false,
+        "featureIndex": 4,
+        "threshold": -0.6804100696254431,
+        "gain": 0.482421875,
+        "left": {
+          "isLeaf": true,
+          "prediction": 0,
+          "probability": 0
+        },
+        "right": {
+          "isLeaf": true,
+          "prediction": 1,
+          "probability": 1
+        },
+        "probability": 0.59375,
+        "prediction": 1
+      },
+      "featureImportancesMap": [
+        0,
+        0,
+        0,
+        0,
+        0.482421875,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "Decision Tree",
+      "maxDepth": 7,
+      "minSamplesSplit": 3,
+      "root": {
+        "isLeaf": false,
+        "featureIndex": 18,
+        "threshold": -0.031265269974036114,
+        "gain": 0.49951171875,
+        "left": {
+          "isLeaf": true,
+          "prediction": 1,
+          "probability": 1
+        },
+        "right": {
+          "isLeaf": true,
+          "prediction": 0,
+          "probability": 0
+        },
+        "probability": 0.484375,
+        "prediction": 0
+      },
+      "featureImportancesMap": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0.49951171875,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "Decision Tree",
+      "maxDepth": 7,
+      "minSamplesSplit": 3,
+      "root": {
+        "isLeaf": false,
+        "featureIndex": 18,
+        "threshold": -0.031265269974036114,
+        "gain": 0.48779296875,
+        "left": {
+          "isLeaf": true,
+          "prediction": 1,
+          "probability": 1
+        },
+        "right": {
+          "isLeaf": true,
+          "prediction": 0,
+          "probability": 0
+        },
+        "probability": 0.578125,
+        "prediction": 1
+      },
+      "featureImportancesMap": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0.48779296875,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "featureImportances": [
+    {
+      "feature": "isHttps",
+      "importance": 0.9606
+    },
+    {
+      "feature": "numHyphens",
+      "importance": 0.0394
+    },
+    {
+      "feature": "urlLength",
+      "importance": 0
+    },
+    {
+      "feature": "domainLength",
+      "importance": 0
+    },
+    {
+      "feature": "numDots",
+      "importance": 0
+    },
+    {
+      "feature": "numSubdomains",
+      "importance": 0
+    },
+    {
+      "feature": "numSpecialChars",
+      "importance": 0
+    },
+    {
+      "feature": "hasIpHost",
+      "importance": 0
+    },
+    {
+      "feature": "hasAtSymbol",
+      "importance": 0
+    },
+    {
+      "feature": "isShortener",
+      "importance": 0
+    },
+    {
+      "feature": "hasSuspiciousTld",
+      "importance": 0
+    },
+    {
+      "feature": "hasBrandInSubdomain",
+      "importance": 0
+    },
+    {
+      "feature": "hasPunycode",
+      "importance": 0
+    },
+    {
+      "feature": "numEncodedChars",
+      "importance": 0
+    },
+    {
+      "feature": "pathDepth",
+      "importance": 0
+    },
+    {
+      "feature": "queryLength",
+      "importance": 0
+    },
+    {
+      "feature": "numQueries",
+      "importance": 0
+    },
+    {
+      "feature": "numRedirectTokens",
+      "importance": 0
+    },
+    {
+      "feature": "hasLoginKeyword",
+      "importance": 0
+    },
+    {
+      "feature": "dnsResolves",
+      "importance": 0
+    },
+    {
+      "feature": "domainEntropy",
+      "importance": 0
+    },
+    {
+      "feature": "hasPasswordField",
+      "importance": 0
+    },
+    {
+      "feature": "externalFormAction",
+      "importance": 0
+    },
+    {
+      "feature": "emptyFormAction",
+      "importance": 0
+    },
+    {
+      "feature": "suspiciousIframe",
+      "importance": 0
+    },
+    {
+      "feature": "disabledRightClick",
+      "importance": 0
+    },
+    {
+      "feature": "hiddenElementsCount",
+      "importance": 0
+    }
+  ]
+}

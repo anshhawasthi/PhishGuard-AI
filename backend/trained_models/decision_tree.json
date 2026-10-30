@@ -1,0 +1,52 @@
+{
+  "name": "Decision Tree",
+  "maxDepth": 6,
+  "minSamplesSplit": 4,
+  "root": {
+    "isLeaf": false,
+    "featureIndex": 18,
+    "threshold": -0.031265269974036114,
+    "gain": 0.49951171875,
+    "left": {
+      "isLeaf": true,
+      "prediction": 1,
+      "probability": 1
+    },
+    "right": {
+      "isLeaf": true,
+      "prediction": 0,
+      "probability": 0
+    },
+    "probability": 0.484375,
+    "prediction": 0
+  },
+  "featureImportancesMap": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0.49951171875,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

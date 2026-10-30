@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:7.0
+    container_name: phishguard-mongodb
+    restart: always
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_DATABASE: phishguard_ai
+    volumes:
+      - mongo_data:/data/db
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: phishguard-backend
+    restart: always
+    ports:
+      - "8000:8000"
+    environment:
+      - PORT=8000
+      - NODE_ENV=production
+      - MONGODB_URI=mongodb://mongodb:27017/phishguard_ai
+      - JWT_SECRET=phishguard_super_secure_major_project_jwt_secret_key_2026
+      - JWT_EXPIRES_IN=7d
+      - CORS_ORIGIN=*
+      - ADMIN_EMAIL=admin@phishguard.ai
+      - ADMIN_PASSWORD=Admin@PhishGuard2026!
+    depends_on:
+      - mongodb
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: phishguard-frontend
+    restart: always
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+
+volumes:
+  mongo_data:

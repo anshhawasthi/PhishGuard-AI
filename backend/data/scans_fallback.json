@@ -1,0 +1,796 @@
+[
+  {
+    "_id": "scan_1793359306428_gd9mh",
+    "user_id": null,
+    "original_url": "https://paypal.com",
+    "normalized_url": "https://paypal.com/",
+    "verdict": "safe",
+    "risk_score": 5,
+    "ml_prediction": "legitimate",
+    "ml_probability": 0.1905,
+    "model_version": "Gradient Boosted Trees",
+    "detected_factors": [
+      {
+        "id": "dns_unresolved",
+        "label": "Unresolved / Inactive Domain",
+        "severity": "low",
+        "description": "The domain does not currently resolve via authoritative public DNS. It may be dormant, private, or experiencing temporary network disruption.",
+        "evidence": "Host paypal.com has no active DNS records"
+      }
+    ],
+    "domain_analysis": {
+      "domain": "paypal.com",
+      "subdomain": "",
+      "tld": "com",
+      "ip_addresses": [],
+      "dns_resolves": false,
+      "is_shortener": false,
+      "is_suspicious_tld": false,
+      "entropy": 2.9219
+    },
+    "ssl_analysis": {
+      "has_https": true,
+      "is_valid": false
+    },
+    "content_analysis": {
+      "checked": false,
+      "has_forms": false,
+      "has_password_field": false,
+      "external_form_action": false,
+      "empty_form_action": false,
+      "hidden_elements_count": 0,
+      "suspicious_iframes_count": 0,
+      "disabled_right_click": false,
+      "error_message": "Website content unreachable (getaddrinfo ENOTFOUND paypal.com). Partial heuristic analysis applied."
+    },
+    "scan_status": "partial",
+    "client_source": "web",
+    "created_at": "2026-10-30T11:21:46.426Z"
+  },
+  {
+    "_id": "scan_1793359306408_3nk3g",
+    "user_id": null,
+    "original_url": "http://192.168.1.1/admin",
+    "normalized_url": "http://192.168.1.1/admin",
+    "verdict": "phishing",
+    "risk_score": 50,
+    "ml_prediction": "phishing",
+    "ml_probability": 0.802,
+    "model_version": "Gradient Boosted Trees",
+    "detected_factors": [
+      {
+        "id": "ip_host",
+        "label": "IP-Based Host Address",
+        "severity": "critical",
+        "description": "Host uses a raw numerical IP address instead of a registered domain name, heavily correlated with rogue phishing servers.",
+        "evidence": "Host: 192.168.1.1"
+      },
+      {
+        "id": "no_https",
+        "label": "Insecure Protocol (Plain HTTP)",
+        "severity": "medium",
+        "description": "Communication is not encrypted with HTTPS. Browsing or submitting sensitive info over plain HTTP exposes data to eavesdropping.",
+        "evidence": "Protocol: http://"
+      }
+    ],
+    "domain_analysis": {
+      "domain": "192.168.1.1",
+      "subdomain": "",
+      "tld": "",
+      "ip_addresses": [
+        "192.168.1.1"
+      ],
+      "dns_resolves": true,
+      "is_shortener": false,
+      "is_suspicious_tld": false,
+      "entropy": 2.2999
+    },
+    "ssl_analysis": {
+      "has_https": false,
+      "is_valid": false
+    },
+    "content_analysis": {
+      "checked": false,
+      "has_forms": false,
+      "has_password_field": false,
+      "external_form_action": false,
+      "empty_form_action": false,
+      "hidden_elements_count": 0,
+      "suspicious_iframes_count": 0,
+      "disabled_right_click": false,
+      "error_message": "Blocked by SSRF Protection: Target IP \"192.168.1.1\" is a private, loopback, or cloud-metadata address."
+    },
+    "scan_status": "partial",
+    "client_source": "web",
+    "created_at": "2026-10-30T11:21:46.406Z"
+  },
+  {
+    "_id": "scan_1793359306404_od23i",
+    "user_id": null,
+    "original_url": "http://user-update-account-verification-service.com/login",
+    "normalized_url": "http://user-update-account-verification-service.com/login",
+    "verdict": "phishing",
+    "risk_score": 35,
+    "ml_prediction": "phishing",
+    "ml_probability": 0.802,
+    "model_version": "Gradient Boosted Trees",
+    "detected_factors": [
+      {
+        "id": "no_https",
+        "label": "Insecure Protocol (Plain HTTP)",
+        "severity": "medium",
+        "description": "Communication is not encrypted with HTTPS. Browsing or submitting sensitive info over plain HTTP exposes data to eavesdropping.",
+        "evidence": "Protocol: http://"
+      },
+      {
+        "id": "dns_unresolved",
+        "label": "Unresolved / Inactive Domain",
+        "severity": "low",
+        "description": "The domain does not currently resolve via authoritative public DNS. It may be dormant, private, or experiencing temporary network disruption.",
+        "evidence": "Host user-update-account-verification-service.com has no active DNS records"
+      },
+      {
+        "id": "high_entropy",
+        "label": "Algorithmic Domain Pattern (DGA)",
+        "severity": "medium",
+        "description": "The domain name exhibits unusually high Shannon entropy, characteristic of Domain Generation Algorithms used by botnets.",
+        "evidence": "Entropy score: 3.8914"
+      }
+    ],
+    "domain_analysis": {
+      "domain": "user-update-account-verification-service.com",
+      "subdomain": "",
+      "tld": "com",
+      "ip_addresses": [],
+      "dns_resolves": false,
+      "is_shortener": false,
+      "is_suspicious_tld": false,
+      "entropy": 3.8914
+    },
+    "ssl_analysis": {
+      "has_https": false,
+      "is_valid": false
+    },
+    "content_analysis": {
+      "checked": false,
+      "has_forms": false,
+      "has_password_field": false,
+      "external_form_action": false,
+      "empty_form_action": false,
+      "hidden_elements_count": 0,
+      "suspicious_iframes_count": 0,
+      "disabled_right_click": false,
+      "error_message": "Website content unreachable (getaddrinfo ENOTFOUND user-update-account-verification-service.com). Partial heuristic analysis applied."
+    },
+    "scan_status": "partial",
+    "client_source": "web",
+    "created_at": "2026-10-30T11:21:46.402Z"
+  },
+  {
+    "_id": "scan_1793359306388_1o4bd",
+    "user_id": null,
+    "original_url": "https://developer.mozilla.org/en-US/docs/Web",
+    "normalized_url": "https://developer.mozilla.org/en-US/docs/Web",
+    "verdict": "safe",
+    "risk_score": 5,
+    "ml_prediction": "legitimate",
+    "ml_probability": 0.1905,
+    "model_version": "Gradient Boosted Trees",
+    "detected_factors": [
+      {
+        "id": "dns_unresolved",
+        "label": "Unresolved / Inactive Domain",
+        "severity": "low",
+        "description": "The domain does not currently resolve via authoritative public DNS. It may be dormant, private, or experiencing temporary network disruption.",
+        "evidence": "Host mozilla.org has no active DNS records"
+      }
+    ],
+    "domain_analysis": {
+      "domain": "mozilla.org",
+      "subdomain": "developer",
+      "tld": "org",
+      "ip_addresses": [],
+      "dns_resolves": false,
+      "is_shortener": false,
+      "is_suspicious_tld": false,
+      "entropy": 3.5226
+    },
+    "ssl_analysis": {
+      "has_https": true,
+      "is_valid": false
+    },
+    "content_analysis": {
+      "checked": false,
+      "has_forms": false,
+      "has_password_field": false,
+      "external_form_action": false,
+      "empty_form_action": false,
+      "hidden_elements_count": 0,
+      "suspicious_iframes_count": 0,
+      "disabled_right_click": false,
+      "error_message": "Website content unreachable (getaddrinfo ENOTFOUND developer.mozilla.org). Partial heuristic analysis applied."
+    },
+    "scan_status": "partial",
+    "client_source": "web",
+    "created_at": "2026-10-30T11:21:46.386Z"
+  },
+  {
+    "_id": "scan_1793359306365_4zvwe",
+    "user_id": null,
+    "original_url": "https://en.wikipedia.org/wiki/Phishing",
+    "normalized_url": "https://en.wikipedia.org/wiki/Phishing",
+    "verdict": "safe",
+    "risk_score": 5,
+    "ml_prediction": "legitimate",
+    "ml_probability": 0.1905,
+    "model_version": "Gradient Boosted Trees",
+    "detected_factors": [
+      {
+        "id": "dns_unresolved",
+        "label": "Unresolved / Inactive Domain",
+        "severity": "low",
+        "description": "The domain does not currently resolve via authoritative public DNS. It may be dormant, private, or experiencing temporary network disruption.",
+        "evidence": "Host wikipedia.org has no active DNS records"
+      }
+    ],
+    "domain_analysis": {
+      "domain": "wikipedia.org",
+      "subdomain": "en",
+      "tld": "org",
+      "ip_addresses": [],
+      "dns_resolves": false,
+      "is_shortener": false,
+      "is_suspicious_tld": false,
+      "entropy": 3.4528
+    },
+    "ssl_analysis": {
+      "has_https": true,
+      "is_valid": false
+    },
+    "content_analysis": {
+      "checked": false,
+      "has_forms": false,
+      "has_password_field": false,
+      "external_form_action": false,
+      "empty_form_action": false,
+      "hidden_elements_count": 0,
+      "suspicious_iframes_count": 0,
+      "disabled_right_click": false,
+      "error_message": "Website content unreachable (getaddrinfo ENOTFOUND en.wikipedia.org). Partial heuristic analysis applied."
+    },
+    "scan_status": "partial",
+    "client_source": "web",
+    "created_at": "2026-10-30T11:21:46.363Z"
+  },
+  {
+    "_id": "scan_1793359277508_ftt13",
+    "user_id": null,
+    "original_url": "http://my-blog-archive-news-updates.info",
+    "normalized_url": "http://my-blog-archive-news-updates.info/",
+    "verdict": "phishing",
+    "risk_score": 35,
+    "ml_prediction": "phishing",
+    "ml_probability": 0.802,
+    "model_version": "Gradient Boosted Trees",
+    "detected_factors": [
+      {
+        "id": "no_https",
+        "label": "Insecure Protocol (Plain HTTP)",
+        "severity": "medium",
+        "description": "Communication is not encrypted with HTTPS. Browsing or submitting sensitive info over plain HTTP exposes data to eavesdropping.",
+        "evidence": "Protocol: http://"
+      },
+      {
+        "id": "dns_unresolved",
+        "label": "Unresolved / Inactive Domain",
+        "severity": "low",
+        "description": "The domain does not currently resolve via authoritative public DNS. It may be dormant, private, or experiencing temporary network disruption.",
+        "evidence": "Host my-blog-archive-news-updates.info has no active DNS records"
+      },
+      {
+        "id": "high_entropy",
+        "label": "Algorithmic Domain Pattern (DGA)",
+        "severity": "medium",
+        "description": "The domain name exhibits unusually high Shannon entropy, characteristic of Domain Generation Algorithms used by botnets.",
+        "evidence": "Entropy score: 4.3549"
+      }
+    ],
+    "domain_analysis": {
+      "domain": "my-blog-archive-news-updates.info",
+      "subdomain": "",
+      "tld": "info",
+      "ip_addresses": [],
+      "dns_resolves": false,
+      "is_shortener": false,
+      "is_suspicious_tld": false,
+      "entropy": 4.3549
+    },
+    "ssl_analysis": {
+      "has_https": false,
+      "is_valid": false
+    },
+    "content_analysis": {
+      "checked": false,
+      "has_forms": false,
+      "has_password_field": false,
+      "external_form_action": false,
+      "empty_form_action": false,
+      "hidden_elements_count": 0,
+      "suspicious_iframes_count": 0,
+      "disabled_right_click": false,
+      "error_message": "Website content unreachable (getaddrinfo ENOTFOUND my-blog-archive-news-updates.info). Partial heuristic analysis applied."
+    },
+    "scan_status": "partial",
+    "client_source": "web",
+    "created_at": "2026-10-30T11:21:17.505Z"
+  },
+  {
+    "_id": "scan_1793359263699_fkyud",
+    "user_id": null,
+    "original_url": "http://claim-airdrop-rewards-portal.xyz/verify",
+    "normalized_url": "http://claim-airdrop-rewards-portal.xyz/verify",
+    "verdict": "phishing",
+    "risk_score": 55,
+    "ml_prediction": "phishing",
+    "ml_probability": 0.802,
+    "model_version": "Gradient Boosted Trees",
+    "detected_factors": [
+      {
+        "id": "suspicious_tld",
+        "label": "High-Risk Top Level Domain",
+        "severity": "high",
+        "description": "The domain uses \".xyz\", a top-level domain frequently associated with automated spam campaigns and disposable phishing kits.",
+        "evidence": "TLD: .xyz"
+      },
+      {
+        "id": "no_https",
+        "label": "Insecure Protocol (Plain HTTP)",
+        "severity": "medium",
+        "description": "Communication is not encrypted with HTTPS. Browsing or submitting sensitive info over plain HTTP exposes data to eavesdropping.",
+        "evidence": "Protocol: http://"
+      },
+      {
+        "id": "dns_unresolved",
+        "label": "Unresolved / Inactive Domain",
+        "severity": "low",
+        "description": "The domain does not currently resolve via authoritative public DNS. It may be dormant, private, or experiencing temporary network disruption.",
+        "evidence": "Host claim-airdrop-rewards-portal.xyz has no active DNS records"
+      },
+      {
+        "id": "high_entropy",
+        "label": "Algorithmic Domain Pattern (DGA)",
+        "severity": "medium",
+        "description": "The domain name exhibits unusually high Shannon entropy, characteristic of Domain Generation Algorithms used by botnets.",
+        "evidence": "Entropy score: 3.9261"
+      }
+    ],
+    "domain_analysis": {
+      "domain": "claim-airdrop-rewards-portal.xyz",
+      "subdomain": "",
+      "tld": "xyz",
+      "ip_addresses": [],
+      "dns_resolves": false,
+      "is_shortener": false,
+      "is_suspicious_tld": true,
+      "entropy": 3.9261
+    },
+    "ssl_analysis": {
+      "has_https": false,
+      "is_valid": false
+    },
+    "content_analysis": {
+      "checked": false,
+      "has_forms": false,
+      "has_password_field": false,
+      "external_form_action": false,
+      "empty_form_action": false,
+      "hidden_elements_count": 0,
+      "suspicious_iframes_count": 0,
+      "disabled_right_click": false,
+      "error_message": "Website content unreachable (getaddrinfo ENOTFOUND claim-airdrop-rewards-portal.xyz). Partial heuristic analysis applied."
+    },
+    "scan_status": "partial",
+    "client_source": "web",
+    "created_at": "2026-10-30T11:21:03.696Z"
+  },
+  {
+    "_id": "scan_1793359251483_nrvk1",
+    "user_id": null,
+    "original_url": "http://localhost:5173/dashboard",
+    "normalized_url": "http://localhost:5173/dashboard",
+    "verdict": "safe",
+    "risk_score": 0,
+    "ml_prediction": "legitimate",
+    "ml_probability": 0,
+    "model_version": "Gradient Boosted Trees",
+    "detected_factors": [
+      {
+        "id": "local_dev_environment",
+        "label": "Local Development Environment",
+        "severity": "low",
+        "description": "This URL points to your local machine, loopback, or development workstation address.",
+        "evidence": "Host: localhost"
+      }
+    ],
+    "domain_analysis": {
+      "domain": "localhost",
+      "subdomain": "",
+      "tld": "localhost",
+      "ip_addresses": [
+        "::1",
+        "127.0.0.1"
+      ],
+      "dns_resolves": true,
+      "is_shortener": false,
+      "is_suspicious_tld": false,
+      "entropy": 2.7255
+    },
+    "ssl_analysis": {
+      "has_https": false,
+      "is_valid": true,
+      "issuer": "Local Development Host"
+    },
+    "content_analysis": {
+      "checked": true,
+      "has_forms": false,
+      "has_password_field": false,
+      "external_form_action": false,
+      "empty_form_action": false,
+      "hidden_elements_count": 0,
+      "suspicious_iframes_count": 0,
+      "disabled_right_click": false,
+      "title": "Localhost Development Environment"
+    },
+    "scan_status": "completed",
+    "client_source": "web",
+    "created_at": "2026-10-30T11:20:51.481Z"
+  },
+  {
+    "_id": "scan_1793359251476_dyw3u",
+    "user_id": null,
+    "original_url": "http://paypal-security-update.account-verification.ga/login.php",
+    "normalized_url": "http://paypal-security-update.account-verification.ga/login.php",
+    "verdict": "phishing",
+    "risk_score": 85,
+    "ml_prediction": "phishing",
+    "ml_probability": 0.802,
+    "model_version": "Gradient Boosted Trees",
+    "detected_factors": [
+      {
+        "id": "brand_spoofing",
+        "label": "Brand Impersonation in Subdomain/Path",
+        "severity": "high",
+        "description": "A well-known brand keyword was found in the subdomain or path of an unrelated domain, a hallmark tactic of credential harvesters.",
+        "evidence": "Target domain: account-verification.ga, Subdomain: paypal-security-update"
+      },
+      {
+        "id": "suspicious_tld",
+        "label": "High-Risk Top Level Domain",
+        "severity": "high",
+        "description": "The domain uses \".ga\", a top-level domain frequently associated with automated spam campaigns and disposable phishing kits.",
+        "evidence": "TLD: .ga"
+      },
+      {
+        "id": "no_https",
+        "label": "Insecure Protocol (Plain HTTP)",
+        "severity": "medium",
+        "description": "Communication is not encrypted with HTTPS. Browsing or submitting sensitive info over plain HTTP exposes data to eavesdropping.",
+        "evidence": "Protocol: http://"
+      },
+      {
+        "id": "dns_unresolved",
+        "label": "Unresolved / Inactive Domain",
+        "severity": "low",
+        "description": "The domain does not currently resolve via authoritative public DNS. It may be dormant, private, or experiencing temporary network disruption.",
+        "evidence": "Host account-verification.ga has no active DNS records"
+      },
+      {
+        "id": "high_entropy",
+        "label": "Algorithmic Domain Pattern (DGA)",
+        "severity": "medium",
+        "description": "The domain name exhibits unusually high Shannon entropy, characteristic of Domain Generation Algorithms used by botnets.",
+        "evidence": "Entropy score: 4.0338"
+      }
+    ],
+    "domain_analysis": {
+      "domain": "account-verification.ga",
+      "subdomain": "paypal-security-update",
+      "tld": "ga",
+      "ip_addresses": [],
+      "dns_resolves": false,
+      "is_shortener": false,
+      "is_suspicious_tld": true,
+      "entropy": 4.0338
+    },
+    "ssl_analysis": {
+      "has_https": false,
+      "is_valid": false
+    },
+    "content_analysis": {
+      "checked": false,
+      "has_forms": false,
+      "has_password_field": false,
+      "external_form_action": false,
+      "empty_form_action": false,
+      "hidden_elements_count": 0,
+      "suspicious_iframes_count": 0,
+      "disabled_right_click": false,
+      "error_message": "Website content unreachable (getaddrinfo ENOTFOUND paypal-security-update.account-verification.ga). Partial heuristic analysis applied."
+    },
+    "scan_status": "partial",
+    "client_source": "web",
+    "created_at": "2026-10-30T11:20:51.474Z"
+  },
+  {
+    "_id": "scan_1793359251451_6pds4",
+    "user_id": null,
+    "original_url": "https://github.com/torvalds/linux",
+    "normalized_url": "https://github.com/torvalds/linux",
+    "verdict": "safe",
+    "risk_score": 5,
+    "ml_prediction": "legitimate",
+    "ml_probability": 0.1905,
+    "model_version": "Gradient Boosted Trees",
+    "detected_factors": [
+      {
+        "id": "dns_unresolved",
+        "label": "Unresolved / Inactive Domain",
+        "severity": "low",
+        "description": "The domain does not currently resolve via authoritative public DNS. It may be dormant, private, or experiencing temporary network disruption.",
+        "evidence": "Host github.com has no active DNS records"
+      }
+    ],
+    "domain_analysis": {
+      "domain": "github.com",
+      "subdomain": "",
+      "tld": "com",
+      "ip_addresses": [],
+      "dns_resolves": false,
+      "is_shortener": false,
+      "is_suspicious_tld": false,
+      "entropy": 3.3219
+    },
+    "ssl_analysis": {
+      "has_https": true,
+      "is_valid": false
+    },
+    "content_analysis": {
+      "checked": false,
+      "has_forms": false,
+      "has_password_field": false,
+      "external_form_action": false,
+      "empty_form_action": false,
+      "hidden_elements_count": 0,
+      "suspicious_iframes_count": 0,
+      "disabled_right_click": false,
+      "error_message": "Website content unreachable (getaddrinfo ENOTFOUND github.com). Partial heuristic analysis applied."
+    },
+    "scan_status": "partial",
+    "client_source": "web",
+    "created_at": "2026-10-30T11:20:51.449Z"
+  },
+  {
+    "_id": "scan_1793359189589_0spgn",
+    "user_id": null,
+    "original_url": "https://github.com/torvalds/linux",
+    "normalized_url": "https://github.com/torvalds/linux",
+    "verdict": "suspicious",
+    "risk_score": 5,
+    "ml_prediction": "unavailable",
+    "ml_probability": 0.5,
+    "model_version": "None (Untrained)",
+    "detected_factors": [
+      {
+        "id": "dns_unresolved",
+        "label": "Unresolved / Inactive Domain",
+        "severity": "low",
+        "description": "The domain does not currently resolve via authoritative public DNS. It may be dormant, private, or experiencing temporary network disruption.",
+        "evidence": "Host github.com has no active DNS records"
+      }
+    ],
+    "domain_analysis": {
+      "domain": "github.com",
+      "subdomain": "",
+      "tld": "com",
+      "ip_addresses": [],
+      "dns_resolves": false,
+      "is_shortener": false,
+      "is_suspicious_tld": false,
+      "entropy": 3.3219
+    },
+    "ssl_analysis": {
+      "has_https": true,
+      "is_valid": false
+    },
+    "content_analysis": {
+      "checked": false,
+      "has_forms": false,
+      "has_password_field": false,
+      "external_form_action": false,
+      "empty_form_action": false,
+      "hidden_elements_count": 0,
+      "suspicious_iframes_count": 0,
+      "disabled_right_click": false,
+      "error_message": "Website content unreachable (getaddrinfo ENOTFOUND github.com). Partial heuristic analysis applied."
+    },
+    "scan_status": "partial",
+    "client_source": "web",
+    "created_at": "2026-10-30T11:19:49.587Z"
+  },
+  {
+    "_id": "scan_1793359169176_w97ta",
+    "user_id": null,
+    "original_url": "http://paypal-security-update.account-verification.ga/login.php",
+    "normalized_url": "http://paypal-security-update.account-verification.ga/login.php",
+    "verdict": "phishing",
+    "risk_score": 85,
+    "ml_prediction": "unavailable",
+    "ml_probability": 0.5,
+    "model_version": "None (Untrained)",
+    "detected_factors": [
+      {
+        "id": "brand_spoofing",
+        "label": "Brand Impersonation in Subdomain/Path",
+        "severity": "high",
+        "description": "A well-known brand keyword was found in the subdomain or path of an unrelated domain, a hallmark tactic of credential harvesters.",
+        "evidence": "Target domain: account-verification.ga, Subdomain: paypal-security-update"
+      },
+      {
+        "id": "suspicious_tld",
+        "label": "High-Risk Top Level Domain",
+        "severity": "high",
+        "description": "The domain uses \".ga\", a top-level domain frequently associated with automated spam campaigns and disposable phishing kits.",
+        "evidence": "TLD: .ga"
+      },
+      {
+        "id": "no_https",
+        "label": "Insecure Protocol (Plain HTTP)",
+        "severity": "medium",
+        "description": "Communication is not encrypted with HTTPS. Browsing or submitting sensitive info over plain HTTP exposes data to eavesdropping.",
+        "evidence": "Protocol: http://"
+      },
+      {
+        "id": "dns_unresolved",
+        "label": "Unresolved / Inactive Domain",
+        "severity": "low",
+        "description": "The domain does not currently resolve via authoritative public DNS. It may be dormant, private, or experiencing temporary network disruption.",
+        "evidence": "Host account-verification.ga has no active DNS records"
+      },
+      {
+        "id": "high_entropy",
+        "label": "Algorithmic Domain Pattern (DGA)",
+        "severity": "medium",
+        "description": "The domain name exhibits unusually high Shannon entropy, characteristic of Domain Generation Algorithms used by botnets.",
+        "evidence": "Entropy score: 4.0338"
+      }
+    ],
+    "domain_analysis": {
+      "domain": "account-verification.ga",
+      "subdomain": "paypal-security-update",
+      "tld": "ga",
+      "ip_addresses": [],
+      "dns_resolves": false,
+      "is_shortener": false,
+      "is_suspicious_tld": true,
+      "entropy": 4.0338
+    },
+    "ssl_analysis": {
+      "has_https": false,
+      "is_valid": false
+    },
+    "content_analysis": {
+      "checked": false,
+      "has_forms": false,
+      "has_password_field": false,
+      "external_form_action": false,
+      "empty_form_action": false,
+      "hidden_elements_count": 0,
+      "suspicious_iframes_count": 0,
+      "disabled_right_click": false,
+      "error_message": "Website content unreachable (getaddrinfo ENOTFOUND paypal-security-update.account-verification.ga). Partial heuristic analysis applied."
+    },
+    "scan_status": "partial",
+    "client_source": "web",
+    "created_at": "2026-10-30T11:19:29.174Z"
+  },
+  {
+    "_id": "scan_1793359169156_rft04",
+    "user_id": null,
+    "original_url": "https://github.com/torvalds/linux",
+    "normalized_url": "https://github.com/torvalds/linux",
+    "verdict": "suspicious",
+    "risk_score": 5,
+    "ml_prediction": "unavailable",
+    "ml_probability": 0.5,
+    "model_version": "None (Untrained)",
+    "detected_factors": [
+      {
+        "id": "dns_unresolved",
+        "label": "Unresolved / Inactive Domain",
+        "severity": "low",
+        "description": "The domain does not currently resolve via authoritative public DNS. It may be dormant, private, or experiencing temporary network disruption.",
+        "evidence": "Host github.com has no active DNS records"
+      }
+    ],
+    "domain_analysis": {
+      "domain": "github.com",
+      "subdomain": "",
+      "tld": "com",
+      "ip_addresses": [],
+      "dns_resolves": false,
+      "is_shortener": false,
+      "is_suspicious_tld": false,
+      "entropy": 3.3219
+    },
+    "ssl_analysis": {
+      "has_https": true,
+      "is_valid": false
+    },
+    "content_analysis": {
+      "checked": false,
+      "has_forms": false,
+      "has_password_field": false,
+      "external_form_action": false,
+      "empty_form_action": false,
+      "hidden_elements_count": 0,
+      "suspicious_iframes_count": 0,
+      "disabled_right_click": false,
+      "error_message": "Website content unreachable (getaddrinfo ENOTFOUND github.com). Partial heuristic analysis applied."
+    },
+    "scan_status": "partial",
+    "client_source": "web",
+    "created_at": "2026-10-30T11:19:29.154Z"
+  },
+  {
+    "_id": "scan_1793359169072_nlbfl",
+    "user_id": null,
+    "original_url": "http://localhost:5173/dashboard",
+    "normalized_url": "http://localhost:5173/dashboard",
+    "verdict": "safe",
+    "risk_score": 0,
+    "ml_prediction": "legitimate",
+    "ml_probability": 0,
+    "model_version": "Heuristic Fallback",
+    "detected_factors": [
+      {
+        "id": "local_dev_environment",
+        "label": "Local Development Environment",
+        "severity": "low",
+        "description": "This URL points to your local machine, loopback, or development workstation address.",
+        "evidence": "Host: localhost"
+      }
+    ],
+    "domain_analysis": {
+      "domain": "localhost",
+      "subdomain": "",
+      "tld": "localhost",
+      "ip_addresses": [
+        "::1",
+        "127.0.0.1"
+      ],
+      "dns_resolves": true,
+      "is_shortener": false,
+      "is_suspicious_tld": false,
+      "entropy": 2.7255
+    },
+    "ssl_analysis": {
+      "has_https": false,
+      "is_valid": true,
+      "issuer": "Local Development Host"
+    },
+    "content_analysis": {
+      "checked": true,
+      "has_forms": false,
+      "has_password_field": false,
+      "external_form_action": false,
+      "empty_form_action": false,
+      "hidden_elements_count": 0,
+      "suspicious_iframes_count": 0,
+      "disabled_right_click": false,
+      "title": "Localhost Development Environment"
+    },
+    "scan_status": "completed",
+    "client_source": "web",
+    "created_at": "2026-10-30T11:19:29.068Z"
+  }
+]

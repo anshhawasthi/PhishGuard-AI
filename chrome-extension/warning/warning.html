@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Security Warning | PhishGuard AI</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: radial-gradient(circle at 50% 15%, #2a0815 0%, #050814 100%);
+      color: #F8FAFC;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .warning-card {
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(239, 68, 68, 0.5);
+      border-radius: 20px;
+      max-width: 700px;
+      width: 100%;
+      padding: 36px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 35px rgba(239, 68, 68, 0.25);
+      backdrop-filter: blur(16px);
+      position: relative;
+      overflow: hidden;
+    }
+    .warning-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #EF4444, #F59E0B, #EF4444);
+    }
+    .header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+    }
+    .icon-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .danger-badge {
+      width: 56px;
+      height: 56px;
+      background: rgba(239, 68, 68, 0.15);
+      border: 2px solid #EF4444;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      color: #EF4444;
+      box-shadow: 0 0 20px rgba(239, 68, 68, 0.3);
+    }
+    h1 {
+      font-size: 22px;
+      color: #EF4444;
+      letter-spacing: -0.5px;
+      font-weight: 800;
+    }
+    .subtitle {
+      font-size: 12px;
+      color: #94A3B8;
+      margin-top: 3px;
+      font-family: monospace;
+    }
+    .risk-score-pill {
+      background: #7F1D1D;
+      border: 1px solid #EF4444;
+      border-radius: 12px;
+      padding: 8px 16px;
+      text-align: right;
+    }
+    .score-value {
+      font-size: 24px;
+      font-weight: 900;
+      color: #FCA5A5;
+      line-height: 1;
+      font-family: monospace;
+    }
+    .score-label {
+      font-size: 9px;
+      font-weight: 700;
+      color: #E2E8F0;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-top: 3px;
+    }
+    .summary-text {
+      font-size: 13.5px;
+      color: #CBD5E1;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    .url-container {
+      background: #0B0F19;
+      border: 1px solid #1E293B;
+      border-radius: 10px;
+      padding: 12px 16px;
+      margin-bottom: 20px;
+    }
+    .url-title {
+      font-size: 10px;
+      font-weight: 700;
+      color: #64748B;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+    .url-box {
+      font-family: monospace;
+      font-size: 12.5px;
+      color: #FCA5A5;
+      word-break: break-all;
+    }
+    .factors-section {
+      margin-bottom: 24px;
+    }
+    .factors-header {
+      font-size: 11px;
+      font-weight: 700;
+      color: #94A3B8;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .factors-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-height: 220px;
+      overflow-y: auto;
+      padding-right: 4px;
+    }
+    .factor-item {
+      background: rgba(30, 41, 59, 0.5);
+      border-left: 3px solid #EF4444;
+      padding: 10px 14px;
+      border-radius: 6px;
+      font-size: 12px;
+    }
+    .factor-item.high { border-left-color: #F97316; }
+    .factor-item.medium { border-left-color: #F59E0B; }
+    .factor-item.low { border-left-color: #10B981; }
+
+    .factor-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 3px;
+    }
+    .factor-title {
+      font-weight: 700;
+      color: #F1F5F9;
+    }
+    .factor-badge {
+      font-size: 9px;
+      font-weight: 800;
+      padding: 2px 6px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      background: rgba(239, 68, 68, 0.2);
+      color: #FCA5A5;
+    }
+    .factor-desc {
+      color: #94A3B8;
+      font-size: 11.5px;
+      line-height: 1.4;
+    }
+    .factor-evidence {
+      font-family: monospace;
+      font-size: 10.5px;
+      color: #38BDF8;
+      margin-top: 4px;
+    }
+    .btn-group {
+      display: flex;
+      gap: 14px;
+      margin-top: 24px;
+    }
+    .btn {
+      padding: 13px 22px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 13px;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s;
+      text-align: center;
+    }
+    .btn-safe {
+      background: linear-gradient(135deg, #00F0FF 0%, #0A84FF 100%);
+      color: #050814;
+      flex: 1;
+      box-shadow: 0 4px 15px rgba(0, 240, 255, 0.3);
+    }
+    .btn-safe:hover {
+      box-shadow: 0 6px 25px rgba(0, 240, 255, 0.5);
+      transform: translateY(-1px);
+    }
+    .btn-proceed {
+      background: transparent;
+      border: 1px solid #475569;
+      color: #94A3B8;
+      flex-shrink: 0;
+    }
+    .btn-proceed:hover {
+      background: rgba(239, 68, 68, 0.12);
+      color: #EF4444;
+      border-color: #EF4444;
+    }
+  </style>
+</head>
+<body>
+  <div class="warning-card">
+    <div class="header-row">
+      <div class="icon-header">
+        <div class="danger-badge">⚠</div>
+        <div>
+          <h1>Phishing Attack Blocked</h1>
+          <div class="subtitle" id="engine-subtitle">PhishGuard AI Multi-Layer ML Engine</div>
+        </div>
+      </div>
+      <div class="risk-score-pill">
+        <div class="score-value" id="score-display">--</div>
+        <div class="score-label" id="verdict-label">PHISHING</div>
+      </div>
+    </div>
+
+    <p class="summary-text">
+      PhishGuard AI has intercepted and blocked navigation to this website. Multi-layer analysis determined that this domain exhibits strong characteristics of an active credential harvester, brand impersonation trap, or malicious payload distribution site.
+    </p>
+
+    <div class="url-container">
+      <div class="url-title">TARGET DESTINATION EVALUATED</div>
+      <div class="url-box" id="target-url">Loading destination URL...</div>
+    </div>
+
+    <div class="factors-section">
+      <div class="factors-header">
+        <span>DETECTED THREAT INDICATORS & EVIDENCE</span>
+        <span id="model-name">Classifier: Ready</span>
+      </div>
+      <div class="factors-list" id="factors-container">
+        <!-- Rendered dynamically by warning.js -->
+      </div>
+    </div>
+
+    <div class="btn-group">
+      <button class="btn btn-safe" id="btn-return">Return to Safety (Recommended)</button>
+      <button class="btn btn-proceed" id="btn-proceed">Proceed Anyway (Unsafe)</button>
+    </div>
+  </div>
+
+  <script src="warning.js"></script>
+</body>
+</html>
